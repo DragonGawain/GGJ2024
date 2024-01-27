@@ -31,8 +31,6 @@ public class Spawner : MonoBehaviour
     Vector2 goal;
     void Start()
     {
-        _allowSpawns = _gameManager.GetSpawnStatus();
-
         Transform moon = GameObject.FindGameObjectWithTag("Moon").GetComponent<Transform>();
         goal = moon.position;
 
@@ -43,6 +41,9 @@ public class Spawner : MonoBehaviour
     bool spawning = false;
     private void Update()
     {
+        _allowSpawns = _gameManager.GetSpawnStatus();
+        Debug.Log("allowSpawns: " + _allowSpawns);
+
         if (_allowSpawns && !spawning) {
             StartCoroutine(spawnWave());
         }

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Deposit
+  - Moon
+  - PauseScreen
+  - GameScreen
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -16,7 +20,7 @@ TagManager:
   - Cannon
   - Enemy
   - Shot
-  - ShotDeathPlane
+  - 
   - 
   - 
   - 
