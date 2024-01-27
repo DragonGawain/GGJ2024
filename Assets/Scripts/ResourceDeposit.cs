@@ -44,7 +44,6 @@ public class ResourceDeposit : MonoBehaviour
     void Replenish()
     {
         int choice = Mathf.FloorToInt(Random.Range(0, 2.99f));
-        GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
         switch (choice)
         {
             case 0:
