@@ -60,4 +60,10 @@ public class UIManager : MonoBehaviour
     {
         Instantiate(effectToCreate, new Vector2(), new Quaternion(), buttonEffectContainer.GetComponent<Transform>());
     }
+
+    public void UpdateScoreText(int amount)
+    {
+        var currentScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
+        currentScoreText.text = $"Score: {amount}";
+    }
 }
