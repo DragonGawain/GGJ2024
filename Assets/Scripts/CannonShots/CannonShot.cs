@@ -22,4 +22,12 @@ public abstract class CannonShot : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 10)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
