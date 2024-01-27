@@ -58,11 +58,11 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             int dmg = other.GetComponent<CannonShot>().getDamage();
-            TakeDamage(dmg);
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
                 isCheesed = true;
 
             Destroy(other.gameObject);
+            TakeDamage(dmg);
         }
         // Destroy(gameObject);
         //speed = 0;
