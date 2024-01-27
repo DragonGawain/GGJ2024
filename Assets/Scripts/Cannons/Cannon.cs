@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +13,8 @@ public abstract class Cannon : MonoBehaviour
     protected float range;
     int timer = 0;
     protected int fireRate;
+    float shredSpread = 20;
+    int shredQuantity = 5;
 
     // private void Awake()
     // {
@@ -107,7 +108,34 @@ public abstract class Cannon : MonoBehaviour
     protected void fire()
     {
         ammo--;
-        GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
-        shell.GetComponent<CannonShot>().StartMove(dir);
+        if (cannonType != cheese.SHREDDED)
+        {
+            GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
+            shell.GetComponent<CannonShot>().StartMove(dir);
+        }
+        else
+        {
+            for (int i = 0; i < shredQuantity; i++)
+            {
+                GameObject shell = Instantiate(
+                    cannonShell,
+                    transform.position,
+                    Quaternion.identity
+                );
+                float offset = Random.Range(-shredSpread, shredSpread);
+                Vector2 tempDir = rotate(dir, offset);
+                tempDir.Normalize();
+                shell.GetComponent<CannonShot>().StartMove(tempDir);
+            }
+        }
+    }
+
+    Vector2 rotate(Vector2 v, float delta)
+    {
+        delta *= Mathf.Deg2Rad;
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
     }
 }
