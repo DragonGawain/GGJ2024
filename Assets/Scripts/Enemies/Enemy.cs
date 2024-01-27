@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     bool isCheesed;
     float normalSpeed;
     float cheesSpeed;
+    int cheeseTimer = 0;
 
     public static int counter;
     void Start()
@@ -28,9 +29,17 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         if (isCheesed)
+        {
             speed = cheesSpeed;
+            cheeseTimer++;
+        }
         else
             speed = normalSpeed;
+        if (cheeseTimer >= 250) // 5 * 50 = 250
+        {
+            isCheesed = false;
+            cheeseTimer = 0;
+        }
         
 
         transform.Translate(direction * speed * Time.deltaTime);
@@ -50,7 +59,7 @@ public class Enemy : MonoBehaviour
             TakeDamage(dmg);
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
                 isCheesed = true;
-                
+
             Destroy(other.gameObject);
         }
         // Destroy(gameObject);
