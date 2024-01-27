@@ -7,7 +7,9 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    ClusterSpanwer enemy;
+    ClusterSpanwer clusterSpawner;
+    [SerializeField]
+    BigEnemy bigSpawner;
     
     [SerializeField]
     float angle = 90;
@@ -15,42 +17,65 @@ public class Spawner : MonoBehaviour
     float radius = 10;
 
     [SerializeField]
-    GameObject marker; 
-    
+    GameObject marker;
+
+    float scale = 1;
+    public float small_rate = 0.9f;
+
+    Vector2 goal;
     void Start()
     {
+
         Transform moon = GameObject.Find("Moon").GetComponent<Transform>();
-        Vector2 goal = moon.position;
-        /*float a= moon.localScale.x/ moon.localScale.y;*/ float a = 1;
-        
+        goal = moon.position;
 
-        for (int j = 0; j < 3; j++)
+        //float a= moon.localScale.x/ moon.localScale.y;
+        StartCoroutine(spawnWave());
+    }
+
+
+    IEnumerator spawnWave()
+    {
+        for (int enemy_count = 0; enemy_count < 15; enemy_count++)
         {
-            float p = Random.Range(-angle, angle);
-
-            ClusterSpanwer spawned = Instantiate(enemy, transform);
-            spawned.transform.position = goal + new Vector2(a * Mathf.Sin(p), Mathf.Cos(p)) * radius;
-            spawned.goal = goal;
+            if (Random.value < small_rate)
+                SpawnCluster();
+            else
+                SpawnBig();
+            yield return new WaitForSeconds(1);
         }
-        
-        
+    }
 
+    void SpawnBig()
+    {
+
+        float p = Random.Range(-angle, angle);
+
+        BigEnemy spawned = Instantiate(bigSpawner, transform);
+        spawned.transform.position = goal + new Vector2(scale * Mathf.Sin(p), Mathf.Cos(p)) * radius;
+        spawned.goal = goal;
+    }
+
+    void SpawnCluster()
+    {
+        
+        float p = Random.Range(-angle, angle);
+
+        ClusterSpanwer spawned = Instantiate(clusterSpawner, transform);
+        spawned.transform.position = goal + new Vector2(scale * Mathf.Sin(p), Mathf.Cos(p)) * radius;
+        spawned.goal = goal;
+    }
+
+
+    void VisualizeRadius()
+    {
         float i = -angle;
         while (i < angle)
         {
             print(i);
             GameObject m = Instantiate(marker, transform);
-            m.transform.position = goal + new Vector2(a * Mathf.Sin(i), Mathf.Cos(i)) * radius;
+            m.transform.position = goal + new Vector2(scale * Mathf.Sin(i), Mathf.Cos(i)) * radius;
             i += 0.1f;
         }
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
