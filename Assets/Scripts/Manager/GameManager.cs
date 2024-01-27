@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine("BeginWaveCountDown");
     }
 
+    public bool GetSpawnStatus()
+    {
+        return allowSpawns;    
+    }
+
     private void PlaceNewSpawners()
     {
         // TODO
@@ -156,6 +161,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateScore(int amount)
+    {
+        currentScore += amount;
+    }
+
     public void UpdateAvailableResources(int amount)
     {
         availResources += amount;
@@ -186,5 +196,14 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
 
         uiManager.EndGame();
+    }
+
+    public static Vector2 rotate(Vector2 v, float delta)
+    {
+        delta *= Mathf.Deg2Rad;
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
     }
 }

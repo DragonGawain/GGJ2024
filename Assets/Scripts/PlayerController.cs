@@ -6,7 +6,8 @@ public enum cheese
 {
     MELTED,
     SHREDDED,
-    CURD
+    CURD,
+    MINICURD
 }
 
 public class PlayerController : MonoBehaviour

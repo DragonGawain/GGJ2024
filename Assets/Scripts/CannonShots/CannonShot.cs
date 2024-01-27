@@ -6,6 +6,8 @@ public abstract class CannonShot : MonoBehaviour
 {
     protected Rigidbody2D body;
     protected cheese shellType;
+    protected int damage;
+    protected bool hitDeathPlane = false;
 
     public void StartMove(Vector2 direction)
     {
@@ -20,6 +22,9 @@ public abstract class CannonShot : MonoBehaviour
             case cheese.CURD:
                 body.velocity *= 5;
                 break;
+            case cheese.MINICURD:
+                body.velocity *= 4;
+                break;
         }
     }
 
@@ -27,7 +32,13 @@ public abstract class CannonShot : MonoBehaviour
     {
         if (other.gameObject.layer == 10)
         {
+            hitDeathPlane = true;
             Destroy(this.gameObject);
         }
+    }
+
+    public int getDamage()
+    {
+        return damage;
     }
 }

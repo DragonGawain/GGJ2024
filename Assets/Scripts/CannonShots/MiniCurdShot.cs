@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShreddedShot : CannonShot
+public class MiniCurdShot : CannonShot
 {
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        shellType = cheese.SHREDDED;
-        damage = 2;
+        shellType = cheese.MINICURD;
+        damage = 4;
     }
 }
