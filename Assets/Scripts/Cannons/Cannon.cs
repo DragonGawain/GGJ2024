@@ -77,6 +77,7 @@ public abstract class Cannon : MonoBehaviour
                 aimer.position.x - transform.position.x,
                 aimer.position.y - transform.position.y
             );
+            dir.Normalize();
             shell.GetComponent<CannonShot>().StartMove(dir);
         }
     }

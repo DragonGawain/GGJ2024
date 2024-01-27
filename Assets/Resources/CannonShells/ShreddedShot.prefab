@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5319668902910265102}
   - component: {fileID: 4479648923508737068}
   - component: {fileID: 7801259823723979663}
-  - component: {fileID: 7842523893842440361}
+  - component: {fileID: 5174002652783735210}
   m_Layer: 0
   m_Name: ShreddedShot
   m_TagString: Untagged
@@ -153,7 +153,7 @@ PolygonCollider2D:
       - {x: 0.40234375, y: 0.29296875}
       - {x: 0.29296875, y: 0.40234375}
       - {x: 0.15234375, y: 0.47265625}
---- !u!114 &7842523893842440361
+--- !u!114 &5174002652783735210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5837869590703828692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddface3a486b56346adc670b24404683, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f2bd20e0ee9bfe44866f45ef06d4535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
