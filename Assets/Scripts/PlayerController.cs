@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             {
                 Mine();
                 miningTimer = 0;
-                if (validMine)
+                if (validMine && (carryingType == null || carryingType == miningType))
                     PBInstance = Instantiate(
                         progressBar,
                         new Vector3(
