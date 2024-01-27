@@ -7,8 +7,8 @@ public class Camera : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-    [SerializeField, Range(1f, 10f)]
-    float smoothFactor = 5f;
+    // [SerializeField, Range(1f, 10f)]
+    // float smoothFactor = 5f;
 
     // Start is called before the first frame update
     void Start() { }
