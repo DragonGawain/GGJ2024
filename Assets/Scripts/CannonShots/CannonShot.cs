@@ -15,13 +15,11 @@ public abstract class CannonShot : MonoBehaviour
             case cheese.MELTED:
                 break;
             case cheese.SHREDDED:
+                body.velocity *= 10;
                 break;
             case cheese.CURD:
+                body.velocity *= 5;
                 break;
-        }
-        if (shellType == cheese.SHREDDED || shellType == cheese.CURD)
-        {
-            body.velocity *= 3;
         }
     }
 }

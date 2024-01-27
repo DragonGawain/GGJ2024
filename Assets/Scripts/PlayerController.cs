@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
             body.velocity += new Vector2(0, -accel);
         }
 
-        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed / (carryingQuantity / 5));
+        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed / (((carryingQuantity+1) / 5)));
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
