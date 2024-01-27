@@ -17,7 +17,7 @@ public class ClusterSpanwer : MonoBehaviour
         Spawn();
     }
 
-    public Vector2 goal;
+    
     void Spawn()
     {
         for (int i = 0; i < enemy_count; i++) 
@@ -25,7 +25,7 @@ public class ClusterSpanwer : MonoBehaviour
             Vector2 positon = Random.insideUnitCircle * radius + new Vector2(transform.position.x, transform.position.y);
             MiniEnemy spawned = Instantiate(enemy);
             spawned.transform.position = positon;
-            spawned.goal = goal;
+            
         }
     }
 }

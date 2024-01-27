@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
-    public Vector3 goal;
+    public GameObject goal;
     Vector3 direction;
     protected int HP = 10;
     protected int scoreValue = 500;
@@ -25,9 +25,17 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        goal = findNearestDeposit();
+        if (goal == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            direction = (goal.transform.position - transform.position).normalized;
+        }
         
-        direction = (goal - transform.position).normalized;
-
+        
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _gameManager.UpdateOnScreenEnemyCount(1);
         normalSpeed = speed;
@@ -67,6 +75,20 @@ public class Enemy : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
+        }
+
+        if (goal == null)
+        {
+            goal = findNearestDeposit();
+            if (goal == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                direction = (goal.transform.position - transform.position).normalized;
+            }
+
         }
 
         transform.Translate(direction * speed * Time.deltaTime);
@@ -115,5 +137,33 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         _gameManager.UpdateOnScreenEnemyCount(-1);
+    }
+
+
+    //Code for finding nearest deposit
+    GameObject findNearestDeposit()
+    {
+
+        GameObject[] deposits = GameObject.FindGameObjectsWithTag("Deposit");
+        if (deposits.Length == 0)
+        {
+
+            Debug.Log("SPAWNER CANNOT FIND DEPOSITS");
+            return null;
+        }
+        GameObject minDeposit = deposits[0];
+
+        float minLength = (deposits[0].transform.position - transform.position).magnitude;
+        for (int i = 1; i < deposits.Length; i++)
+        {
+            float length = (deposits[i].transform.position - transform.position).magnitude;
+            if (length < minLength)
+            {
+                minLength = length;
+                minDeposit = deposits[i];
+            }
+        }
+
+        return minDeposit;
     }
 }

@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour
 
         float spawn_angle = Random.Range(-angle, angle);
         Vector3 spawnPos = new Vector2(scale * Mathf.Sin(spawn_angle), Mathf.Cos(spawn_angle)) * radius;
-        goal = findNearestDeposit(spawnPos);
+        
         
         if (Random.value < small_rate)
             SpawnCluster(spawnPos);
@@ -84,7 +84,7 @@ public class Spawner : MonoBehaviour
 
         BigEnemy spawned = Instantiate(bigSpawner, transform);
         spawned.transform.position = spawnPos;
-        spawned.goal = goal;
+        
     }
 
     void SpawnCluster(Vector3 spawnPos)
@@ -92,34 +92,11 @@ public class Spawner : MonoBehaviour
 
         ClusterSpanwer spawned = Instantiate(clusterSpawner, transform);
         spawned.transform.position = spawnPos;
-        spawned.goal = goal;
+        
     }
 
 
-    //Code for finding nearest deposit
-    Vector3 findNearestDeposit(Vector3 spawnPos)
-    {
-
-        GameObject[] deposits = GameObject.FindGameObjectsWithTag("Deposit");
-        if (deposits.Length == 0)
-        {
-            Debug.Log("SPAWNER CANNOT FIND DEPOSITS");
-            return Vector3.zero;
-        }
-        GameObject minDeposit = deposits[0];
-
-        float minLength = (deposits[0].transform.position - spawnPos).magnitude;
-        for (int i = 1; i < deposits.Length; i++)
-        {
-            float length = (deposits[i].transform.position - spawnPos).magnitude;
-            if (length < minLength)
-            {
-                minLength = length;
-                minDeposit = deposits[i];
-            }
-        }
-        return minDeposit.transform.position;
-    }
+    
 
     
 
