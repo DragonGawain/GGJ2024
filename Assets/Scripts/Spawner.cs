@@ -7,9 +7,8 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    GameObject enemy;
-    [SerializeField]
-    Vector3 goal;
+    MiniEnemy enemy;
+    
     [SerializeField]
     float angle = 90;
     [SerializeField]
@@ -18,14 +17,20 @@ public class Spawner : MonoBehaviour
     
     void Start()
     {
+        Transform moon = GameObject.Find("Moon").GetComponent<Transform>();
+        Vector2 goal = moon.position;
+        /*float a= moon.localScale.x/ moon.localScale.y;*/ float a = 1;
+        
+
         print("Spawning");
         float i = -angle;
         while (i < angle)
         {
             print(i);
-            GameObject spawned = Instantiate(enemy, transform);
-            spawned.transform.position = new Vector2(Mathf.Sin(i), Mathf.Cos(i))*radius;
-            i += 0.1f;
+            MiniEnemy spawned = Instantiate(enemy, transform);
+            spawned.transform.position = goal + new Vector2(a*Mathf.Sin(i), Mathf.Cos(i))*radius;
+            spawned.goal = goal;
+            i += 0.3f;
         }
     }
 
