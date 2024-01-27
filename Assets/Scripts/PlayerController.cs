@@ -18,14 +18,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 20)] float maxSpeed = 10;
     [SerializeField, Range(0, 20)] float maxCarryCapacity = 10;
     int carrying = 0;
-    cheese type;
+    cheese ?type = null;
+
+    // Mining vars
+    ResourceDeposit deposit;
+    cheese ?miningType = null;
+    bool validMine = false;
+    int miningTimer = 0; // 30 FU's =  0.6 of a second
+
+    // Cannon vars
+    Cannon cannon;
+
     // Start is called before the first frame update
     void Awake()
     {
         inputs = new Inputs();
         inputs.Player.Enable();
         inputs.Player.Mine.started += StartMine;
-        inputs.Player.Mine.performed += Mine;
+        inputs.Player.Mine.canceled += EndMine;
+        // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -53,22 +64,66 @@ public class PlayerController : MonoBehaviour
 
         body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed/carrying);
 
-        // if (body.velocity.magnitude > 0.1f)
-        // {
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
         dragForce = dragForce / 50;
         body.velocity -= dragForce;
-        // }
+
+        if (validMine)
+        {
+            miningTimer++;
+            if (miningTimer >= 30)
+            {
+                Mine();
+            }
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // if other is a deposit
+        if (other.gameObject.layer == 6)
+        {
+            deposit = other.GetComponent<ResourceDeposit>();
+            miningType = deposit.getType();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            miningType = null;
+            validMine = false;
+            miningTimer = 0;
+        }
     }
 
     private void StartMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        Debug.Log("START");
+        // if you're at a deposit, and you're either not carrying any cheese or the deposit is of the same type as what you're carrying, you can mine. 
+        if (miningType != null && (type == null || type == miningType))
+        {
+            validMine = true;
+            Debug.Log("START");
+            // Mining progress bar visualization?
+        }
     }
 
-    private void Mine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    private void EndMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        Debug.Log("MINE");
+        validMine = false;
+        miningTimer = 0;
+    }
+
+    void Mine()
+    {
+
+    }
+
+    void LoadCannon()
+    {
+        
     }
 }

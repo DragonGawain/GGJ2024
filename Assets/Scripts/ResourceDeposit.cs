@@ -7,7 +7,7 @@ public class ResourceDeposit : MonoBehaviour
     [SerializeField, Range(0, 20)] int maxQuantity = 5;
     int currentQuantity;
     bool active = true;
-    cheese type;
+    cheese type = cheese.CURD; //just giving it a default to avoid potential bugs
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)] int replensihTimer = 2;
     // Start is called before the first frame update
@@ -47,6 +47,11 @@ public class ResourceDeposit : MonoBehaviour
                 break;
         }
         currentQuantity = maxQuantity;
+    }
+
+    public cheese getType()
+    {
+        return type;
     }
 
 }
