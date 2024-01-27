@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int enemiesDefated = 0;
     [SerializeField]
-    private bool allowSpawns = true;
+    private bool allowSpawns = false;
     [SerializeField]
     private GameObject[] spawnerList = new GameObject[3];
     [SerializeField]
@@ -44,6 +44,20 @@ public class GameManager : MonoBehaviour
     // public for now so I can see the wave state
     public bool attackTime = false;
     int timer = 0;
+
+    private void Awake()
+    {
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        attackTime = false;
+
+        ReplenishAllDeposits();
+
+        StartCoroutine("BeginWaveCountDown");
+    }
 
     // Start is called before the first frame update
     void Start() { }
@@ -88,19 +102,17 @@ public class GameManager : MonoBehaviour
         attackTime = false;
         
         currentEnemyWave += 1;
-
-        if (currentEnemyCount % waveCountTillNewSpawners == 0)
+        if (currentEnemyWave % waveCountTillNewSpawners == 0)
         {
             newSpawnerCount += 1;
 
             maxNumEnemies += 5;
-
             maxOnScreenEnemyCount += Mathf.CeilToInt(maxNumEnemies / 2);
 
             PlaceNewSpawners();
         }
 
-        var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyCount % 10 == 0 ? 2 : 1)));
+        var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyWave % 10 == 0 ? 2 : 1)));
         currentScore += waveCompletionScoreToAdd;
 
         ReplenishAllDeposits();
@@ -122,6 +134,37 @@ public class GameManager : MonoBehaviour
         allowSpawns = true;
     }
 
+    public void UpdateOnScreenEnemyCount(int amount)
+    {
+        currentEnemyCount += amount;
+        if (currentEnemyCount >= maxOnScreenEnemyCount)
+        {
+            allowSpawns = false;
+        }
+        else
+        {
+            allowSpawns = true;
+        }
+    }
+
+    public void UpdateDefeatedEnemyCount(int amount)
+    {
+        enemiesDefated += amount;
+        if (enemiesDefated >= maxNumEnemies)
+        {
+            CompleteWave();
+        }
+    }
+
+    public void UpdateAvailableResources(int amount)
+    {
+        availResources += amount;
+        if (availResources <= 0)
+        {
+            GameOver();
+        }
+    }
+
     public void Pause()
     {
         isPaused = true;
@@ -132,7 +175,6 @@ public class GameManager : MonoBehaviour
     public void UpdateResourceAvailabilityCount(int amount)
     {
         availResources += amount;
-
         if (availResources <= 0)
         {
             GameOver();
