@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
         bool check = cannon.increaseAmmo();
         if (check)
             carryingQuantity--;
-        if (carryingQuantity == 0)
+        if (carryingQuantity == 0 && !cannon.cannonFull())
         {
             validCannon = false;
             cannonTimer = 0;
