@@ -6,6 +6,6 @@ public class BigEnemy : Enemy
 {
     private void Awake()
     {
-        HP = 15;
+        HP = 8;
     }
 }
