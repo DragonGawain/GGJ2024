@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     int passiveTimer = 20 * 50;
     int attackTimer = 10 * 50;
-    bool attackTime = false;
+    // public for now so I can see the wave state
+    public bool attackTime = false;
     int timer = 0;
 
     // Start is called before the first frame update
