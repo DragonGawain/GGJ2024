@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 20)]
     float accel = 0.4f;
 
-    [SerializeField, Range(0, 20)]
+    [SerializeField, Range(0, 40)]
     float maxSpeed = 10;
 
     [SerializeField, Range(0, 20)]
