@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,8 @@ public class UIManager : MonoBehaviour
         var pauseScreen = gameScreenList.Where(screen => screen.tag == "PauseScreen").FirstOrDefault();
         currentActiveScreen = pauseScreen;
         currentActiveScreen.SetActive(true);
+
+        Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
@@ -41,6 +44,8 @@ public class UIManager : MonoBehaviour
         var pauseScreen = gameScreenList.Where(screen => screen.tag == "GameScreen").FirstOrDefault();
         currentActiveScreen = pauseScreen;
         currentActiveScreen.SetActive(true);
+
+        Time.timeScale = 1.0f;
     }
 
     public void EndGame()
@@ -55,5 +60,11 @@ public class UIManager : MonoBehaviour
     public void OnButtonUIEvent(GameObject effectToCreate)
     {
         Instantiate(effectToCreate, new Vector2(), new Quaternion(), buttonEffectContainer.GetComponent<Transform>());
+    }
+
+    public void UpdateScoreText(int amount)
+    {
+        var currentScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMeshProUGUI>();
+        currentScoreText.text = $"Score: {amount}";
     }
 }

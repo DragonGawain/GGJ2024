@@ -164,6 +164,8 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int amount)
     {
         currentScore += amount;
+
+        uiManager.UpdateScoreText(amount);
     }
 
     public void UpdateAvailableResources(int amount)
