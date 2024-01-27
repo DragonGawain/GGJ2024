@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
     bool validCannon = false;
     int cannonTimer = 0; // 20 FU's =  0.4 of a second
 
+    [SerializeField]
+    GameObject progressBar;
+    GameObject PBInstance;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -89,6 +93,15 @@ public class PlayerController : MonoBehaviour
             {
                 Mine();
                 miningTimer = 0;
+                PBInstance = Instantiate(
+                    progressBar,
+                    new Vector3(
+                        deposit.gameObject.transform.position.x,
+                        deposit.gameObject.transform.position.y - 1,
+                        0
+                    ),
+                    Quaternion.identity
+                );
             }
         }
 
@@ -128,6 +141,8 @@ public class PlayerController : MonoBehaviour
             miningTimer = 0;
             miningType = null;
             deposit = null;
+            if (PBInstance != null)
+                Destroy(PBInstance);
         }
         // if other is a cannon
         if (other.gameObject.layer == 7)
@@ -150,6 +165,15 @@ public class PlayerController : MonoBehaviour
         )
         {
             validMine = true;
+            PBInstance = Instantiate(
+                progressBar,
+                new Vector3(
+                    deposit.gameObject.transform.position.x,
+                    deposit.gameObject.transform.position.y - 1,
+                    0
+                ),
+                Quaternion.identity
+            );
             // Mining progress bar visualization?
         }
 
@@ -171,6 +195,8 @@ public class PlayerController : MonoBehaviour
         miningTimer = 0;
         validCannon = false;
         cannonTimer = 0;
+        if (PBInstance != null)
+            Destroy(PBInstance);
     }
 
     void Mine()

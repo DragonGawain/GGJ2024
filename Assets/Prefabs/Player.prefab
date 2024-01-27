@@ -133,6 +133,7 @@ MonoBehaviour:
   accel: 0.4
   maxSpeed: 4.49
   maxCarryCapacity: 10
+  progressBar: {fileID: 8560536626469430719, guid: e9a07446ed37b6247a419334e40deb91, type: 3}
 --- !u!50 &4659881389703721313
 Rigidbody2D:
   serializedVersion: 4
