@@ -12,8 +12,8 @@ public abstract class Cannon : MonoBehaviour
     protected Transform aimer;
     Vector2 dir;
     protected float range;
-
-    public bool shoot = false;
+    int timer = 0;
+    protected int fireRate;
 
     // private void Awake()
     // {
@@ -43,9 +43,19 @@ public abstract class Cannon : MonoBehaviour
         {
             Debug.Log("HIT");
         }
-        if (ammo > 0 && hit.collider != null)
+        if (ammo > 0 && hit.collider != null && timer == 0)
         {
             fire();
+            timer = fireRate;
+        }
+        if (timer > 0)
+        {
+            timer--;
+        }
+        // failsafe
+        if (timer < 0)
+        {
+            timer = 0;
         }
     }
 

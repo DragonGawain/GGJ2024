@@ -11,5 +11,6 @@ public class Curd : Cannon
         cannonShell = Resources.Load<GameObject>("CannonShells/CurdShot");
         aimer = transform.GetChild(0);
         range = 50;
+        fireRate = 2 * 50;
     }
 }
