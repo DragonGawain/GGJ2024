@@ -10,9 +10,16 @@ public abstract class CannonShot : MonoBehaviour
     public void StartMove(Vector2 direction)
     {
         body.velocity = direction;
-        if (shellType == cheese.SHREDDED || shellType == cheese.CURD)
+        switch (shellType)
         {
-            body.velocity *= 3;
+            case cheese.MELTED:
+                break;
+            case cheese.SHREDDED:
+                body.velocity *= 10;
+                break;
+            case cheese.CURD:
+                body.velocity *= 5;
+                break;
         }
     }
 }

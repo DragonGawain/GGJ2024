@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,14 @@ using UnityEngine;
 public abstract class Cannon : MonoBehaviour
 {
     protected cheese cannonType;
-    protected int ammo = 0;
-    protected int maxAmmo = 10;
+    public int ammo = 0;
+    int maxAmmo = 10;
     protected GameObject cannonShell;
     protected Transform aimer;
-
-    public bool shoot = false;
+    Vector2 dir;
+    protected float range;
+    int timer = 0;
+    protected int fireRate;
 
     // private void Awake()
     // {
@@ -19,8 +22,41 @@ public abstract class Cannon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ammo > 0)
+        dir = new Vector2(
+            aimer.position.x - transform.position.x,
+            aimer.position.y - transform.position.y
+        );
+        dir.Normalize();
+        RaycastHit2D hit = Physics2D.Raycast(
+            new Vector2(transform.position.x, transform.position.y),
+            dir,
+            range,
+            LayerMask.GetMask("Enemy")
+        );
+        // Debug.DrawRay(
+        //     new Vector2(transform.position.x, transform.position.y),
+        //     dir * range,
+        //     Color.green,
+        //     1
+        // );
+        if (hit.collider != null)
+        {
+            Debug.Log("HIT");
+        }
+        if (ammo > 0 && hit.collider != null && timer == 0)
+        {
             fire();
+            timer = fireRate;
+        }
+        if (timer > 0)
+        {
+            timer--;
+        }
+        // failsafe
+        if (timer < 0)
+        {
+            timer = 0;
+        }
     }
 
     public void UpgradeAmmo(int qt)
@@ -70,17 +106,8 @@ public abstract class Cannon : MonoBehaviour
 
     protected void fire()
     {
-        if (shoot)
-        {
-            shoot = false;
-            ammo--;
-            GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
-            Vector2 dir = new Vector2(
-                aimer.position.x - transform.position.x,
-                aimer.position.y - transform.position.y
-            );
-            dir.Normalize();
-            shell.GetComponent<CannonShot>().StartMove(dir);
-        }
+        ammo--;
+        GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
+        shell.GetComponent<CannonShot>().StartMove(dir);
     }
 }

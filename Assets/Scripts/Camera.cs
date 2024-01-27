@@ -22,11 +22,11 @@ public class Camera : MonoBehaviour
             -10
         );
 
-        targetPosition = Vector3.Lerp(
-            transform.position,
-            targetPosition,
-            smoothFactor * Time.fixedDeltaTime
-        );
+        // targetPosition = Vector3.Lerp(
+        //     transform.position,
+        //     targetPosition,
+        //     smoothFactor * Time.fixedDeltaTime
+        // );
         transform.position = targetPosition;
     }
 }
