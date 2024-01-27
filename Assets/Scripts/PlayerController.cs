@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 20)] float maxSpeed = 10;
     [SerializeField, Range(0, 20)] float maxCarryCapacity = 10;
     int carrying = 0;
+    cheese type;
     // Start is called before the first frame update
     void Awake()
     {
         inputs = new Inputs();
         inputs.Player.Enable();
+        inputs.Player.Mine.started += StartMine;
+        inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -57,5 +60,15 @@ public class PlayerController : MonoBehaviour
         dragForce = dragForce / 50;
         body.velocity -= dragForce;
         // }
+    }
+
+    private void StartMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        Debug.Log("START");
+    }
+
+    private void Mine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        Debug.Log("MINE");
     }
 }
