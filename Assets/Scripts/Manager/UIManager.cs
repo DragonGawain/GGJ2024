@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
         var pauseScreen = gameScreenList.Where(screen => screen.tag == "PauseScreen").FirstOrDefault();
         currentActiveScreen = pauseScreen;
         currentActiveScreen.SetActive(true);
+
+        Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
@@ -41,6 +43,8 @@ public class UIManager : MonoBehaviour
         var pauseScreen = gameScreenList.Where(screen => screen.tag == "GameScreen").FirstOrDefault();
         currentActiveScreen = pauseScreen;
         currentActiveScreen.SetActive(true);
+
+        Time.timeScale = 1.0f;
     }
 
     public void EndGame()
