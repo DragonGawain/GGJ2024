@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4479648923508737068}
   - component: {fileID: 7801259823723979663}
   - component: {fileID: 5174002652783735210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShreddedShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

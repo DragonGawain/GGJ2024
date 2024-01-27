@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3326157507407870191}
   - component: {fileID: 1921979687184491042}
   - component: {fileID: 450538184186639295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CurdShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
