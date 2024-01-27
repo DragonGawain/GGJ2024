@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class MiniEnemy : Enemy
 {
-    
+    private void Awake()
+    {
+        HP = 6;
+    }
 }

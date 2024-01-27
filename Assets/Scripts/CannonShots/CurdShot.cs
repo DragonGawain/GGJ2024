@@ -11,7 +11,7 @@ public class CurdShot : CannonShot
     {
         body = GetComponent<Rigidbody2D>();
         shellType = cheese.CURD;
-        damage = 10;
+        damage = 15;
         miniShell = Resources.Load<GameObject>("CannonShells/MiniCurdShot");
     }
 

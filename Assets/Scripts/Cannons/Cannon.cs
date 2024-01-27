@@ -15,8 +15,8 @@ public abstract class Cannon : MonoBehaviour
     protected float range;
     int timer = 0;
     protected int fireRate;
-    float shredSpread = 20;
-    int shredQuantity = 5;
+    float shredSpread = 15;
+    int shredQuantity = 15;
 
     // Set to half of the total angle from far left to far right (i.e. angle limit)
     protected int rotation = 0;

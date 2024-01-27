@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class BigEnemy : Enemy
 {
+    private void Awake()
+    {
+        HP = 15;
+    }
 }
