@@ -10,5 +10,6 @@ public class Melted : Cannon
         cannonType = cheese.MELTED;
         cannonShell = Resources.Load<GameObject>("CannonShells/MeltedShot");
         aimer = transform.GetChild(0);
+        range = 25;
     }
 }
