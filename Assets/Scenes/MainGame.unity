@@ -1729,11 +1729,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: waveCountDown
-      value: 10000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: availResources
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
+      propertyPath: scoreOnWaveCompletion
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938461, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: m_RootOrder
