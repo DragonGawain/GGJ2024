@@ -31,4 +31,9 @@ public abstract class CannonShot : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public int getDamage()
+    {
+        return damage;
+    }
 }
