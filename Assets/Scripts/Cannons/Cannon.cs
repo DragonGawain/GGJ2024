@@ -5,17 +5,24 @@ using UnityEngine;
 public abstract class Cannon : MonoBehaviour
 {
     protected cheese cannonType;
-    protected int ammo;
-    protected int maxAmmo;
+    protected int ammo = 0;
+    protected int maxAmmo = 10;
 
     public void UpgradeAmmo(int qt)
     {
         maxAmmo += qt;
     }
 
-    public int getAmmo()
+    // public int getAmmo()
+    // {
+    //     return ammo;
+    // }
+
+    public bool cannonFull()
     {
-        return ammo;
+        if (ammo == maxAmmo)
+            return true;
+        return false;
     }
 
     public int setAmmo(int qt)
@@ -28,5 +35,21 @@ public abstract class Cannon : MonoBehaviour
             ammo = maxAmmo;
         }
         return leftover;
+    }
+
+    public bool increaseAmmo()
+    {
+        if (ammo >= maxAmmo)
+        {
+            ammo = maxAmmo;
+            return false;
+        }
+        ammo++;
+        return true;
+    }
+
+    public cheese getType()
+    {
+        return cannonType;
     }
 }

@@ -7,6 +7,7 @@ public class ResourceDeposit : MonoBehaviour
     [SerializeField, Range(0, 20)]
     int maxQuantity = 5;
     int currentQuantity;
+
     // bool active = true;
     cheese type = cheese.CURD; //just giving it a default to avoid potential bugs
 
@@ -37,7 +38,6 @@ public class ResourceDeposit : MonoBehaviour
     void Replenish()
     {
         int choice = Mathf.FloorToInt(Random.Range(0, 2.99f));
-        Debug.Log(choice);
         switch (choice)
         {
             case 0:
