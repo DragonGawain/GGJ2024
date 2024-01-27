@@ -6,6 +6,7 @@ public abstract class CannonShot : MonoBehaviour
 {
     protected Rigidbody2D body;
     protected cheese shellType;
+    protected int damage;
 
     public void StartMove(Vector2 direction)
     {

@@ -8,5 +8,6 @@ public class CurdShot : CannonShot
     {
         body = GetComponent<Rigidbody2D>();
         shellType = cheese.CURD;
+        damage = 5;
     }
 }

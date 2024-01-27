@@ -8,5 +8,6 @@ public class MeltedShot : CannonShot
     {
         body = GetComponent<Rigidbody2D>();
         shellType = cheese.MELTED;
+        damage = 0;
     }
 }
