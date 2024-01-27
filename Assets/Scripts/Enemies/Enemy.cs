@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        
         direction = (goal - transform.position).normalized;
 
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();

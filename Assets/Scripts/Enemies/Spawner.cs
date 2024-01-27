@@ -51,9 +51,6 @@ public class Spawner : MonoBehaviour
         //Debug.Log("allowSpawns: " + _allowSpawns);
 
 
-        //DELETE LATER
-        _allowSpawns = true;
-
         if (_allowSpawns && !spawning) {
             StartCoroutine(spawnWave());
         }
