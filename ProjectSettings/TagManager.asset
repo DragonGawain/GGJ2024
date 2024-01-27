@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Deposit
+  - Moon
   layers:
   - Default
   - TransparentFX
