@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Range(0, 20)]
     float maxCarryCapacity = 10;
-    int carrying = 0;
+    int carryingQuantity = 0;
     cheese? carryingType = null;
 
     // Mining vars
@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
 
     // Cannon vars
     Cannon cannon;
+    cheese? cannonType = null;
+    bool validCannon = false;
+    int cannonTimer = 0; // 20 FU's =  0.4 of a second
 
     // Start is called before the first frame update
     void Awake()
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
             body.velocity += new Vector2(0, -accel);
         }
 
-        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed / (carrying / 5));
+        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed / (carryingQuantity / 5));
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
@@ -84,6 +87,16 @@ public class PlayerController : MonoBehaviour
                 miningTimer = 0;
             }
         }
+
+        if (validCannon)
+        {
+            cannonTimer++;
+            if (cannonTimer >= 20)
+            {
+                LoadCannon();
+                cannonTimer = 0;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -94,15 +107,31 @@ public class PlayerController : MonoBehaviour
             deposit = other.GetComponent<ResourceDeposit>();
             miningType = deposit.getType();
         }
+        // if other is a cannon
+        if (other.gameObject.layer == 7)
+        {
+            cannon = other.GetComponent<Cannon>();
+            cannonType = cannon.getType();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        // if other is a deposit
         if (other.gameObject.layer == 6)
         {
-            miningType = null;
             validMine = false;
             miningTimer = 0;
+            miningType = null;
+            deposit = null;
+        }
+        // if other is a cannon
+        if (other.gameObject.layer == 7)
+        {
+            validCannon = false;
+            cannonTimer = 0;
+            cannonType = null;
+            cannon = null;
         }
     }
 
@@ -113,12 +142,22 @@ public class PlayerController : MonoBehaviour
             miningType != null
             && (carryingType == null || carryingType == miningType)
             && deposit.getQuantity() > 0
-            && carrying < maxCarryCapacity
+            && carryingQuantity < maxCarryCapacity
         )
         {
             validMine = true;
-            Debug.Log("START");
             // Mining progress bar visualization?
+        }
+
+        if (
+            cannonType != null
+            && carryingType == cannonType
+            && !cannon.cannonFull()
+            && carryingQuantity > 0
+        )
+        {
+            validCannon = true;
+            // Cannon progress bar visualization?
         }
     }
 
@@ -126,6 +165,8 @@ public class PlayerController : MonoBehaviour
     {
         validMine = false;
         miningTimer = 0;
+        validCannon = false;
+        cannonTimer = 0;
     }
 
     void Mine()
@@ -133,7 +174,7 @@ public class PlayerController : MonoBehaviour
         int check = deposit.reduceQuantity();
         if (check >= 0)
         {
-            carrying++;
+            carryingQuantity++;
             carryingType = miningType;
         }
         else
@@ -144,6 +185,13 @@ public class PlayerController : MonoBehaviour
 
     void LoadCannon()
     {
-        //
+        bool check = cannon.increaseAmmo();
+        if (check)
+            carryingQuantity--;
+        if (carryingQuantity == 0)
+        {
+            validCannon = false;
+            cannonTimer = 0;
+        }
     }
 }

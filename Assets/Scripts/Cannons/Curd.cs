@@ -5,9 +5,9 @@ using UnityEngine;
 public class Curd : Cannon
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+         cannonType = cheese.CURD;
     }
 
     // Update is called once per frame

@@ -6,7 +6,12 @@ public class ResourceDeposit : MonoBehaviour
 {
     [SerializeField, Range(0, 20)]
     int maxQuantity = 5;
+    [SerializeField, Range(0, 20)]
+    int replensihTimerLimit = 2;
+    [SerializeField, Range(0, 20)]
+    int replenishQuantity = 5;
     int currentQuantity;
+
     // bool active = true;
     cheese type = cheese.CURD; //just giving it a default to avoid potential bugs
 
@@ -30,14 +35,13 @@ public class ResourceDeposit : MonoBehaviour
         if (replensihTimer == 0)
         {
             Replenish();
-            replensihTimer = 2;
+            replensihTimer = replensihTimerLimit;
         }
     }
 
     void Replenish()
     {
         int choice = Mathf.FloorToInt(Random.Range(0, 2.99f));
-        Debug.Log(choice);
         switch (choice)
         {
             case 0:
@@ -50,7 +54,7 @@ public class ResourceDeposit : MonoBehaviour
                 type = cheese.CURD;
                 break;
         }
-        currentQuantity = maxQuantity;
+        currentQuantity = replenishQuantity;
     }
 
     public cheese getType()
