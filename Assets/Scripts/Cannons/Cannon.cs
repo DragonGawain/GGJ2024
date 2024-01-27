@@ -15,14 +15,14 @@ public abstract class Cannon : MonoBehaviour
     protected float range;
     int timer = 0;
     protected int fireRate;
-    float shredSpread = 20;
-    int shredQuantity = 5;
+    float shredSpread = 15;
+    int shredQuantity = 15;
 
     // Set to half of the total angle from far left to far right (i.e. angle limit)
     protected int rotation = 0;
     protected int rotationTimer = 0;
     bool rotationDir = true;
-    float rotationSpeed = 0.2f;
+    float rotationSpeed = 0.35f;
 
     [SerializeField]
     private GameObject ammoCountTextElement;
@@ -134,7 +134,7 @@ public abstract class Cannon : MonoBehaviour
     protected void fire()
     {
         ammo--;
-        
+
         ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
 
         if (cannonType != cheese.SHREDDED)

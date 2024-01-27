@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public Vector3 goal;
     Vector3 direction;
-    protected int HP = 15;
+    protected int HP = 10;
     protected int scoreValue = 500;
     private GameManager _gameManager;
     bool isCheesed;
@@ -78,9 +78,14 @@ public class Enemy : MonoBehaviour
         {
             int dmg = other.GetComponent<CannonShot>().getDamage();
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
+            {
                 isCheesed = true;
-
-            Destroy(other.gameObject);
+                Destroy(other.gameObject, 2);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
             TakeDamage(dmg);
         }
         // if other is a deposit

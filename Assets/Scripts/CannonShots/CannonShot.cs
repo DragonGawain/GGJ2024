@@ -15,6 +15,7 @@ public abstract class CannonShot : MonoBehaviour
         switch (shellType)
         {
             case cheese.MELTED:
+                body.velocity *= 2.2f;
                 break;
             case cheese.SHREDDED:
                 body.velocity *= 10;
