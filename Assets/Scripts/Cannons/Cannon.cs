@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Cannon : MonoBehaviour
 {
@@ -22,10 +24,18 @@ public abstract class Cannon : MonoBehaviour
     bool rotationDir = true;
     float rotationSpeed = 0.2f;
 
+    [SerializeField]
+    private GameObject ammoCountTextElement;
+
     // private void Awake()
     // {
     //     aimer = transform.GetChild(0);
     // }
+
+    private void Start()
+    {
+        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+    }
 
     private void FixedUpdate()
     {
@@ -110,6 +120,9 @@ public abstract class Cannon : MonoBehaviour
             return false;
         }
         ammo++;
+
+        ammoCountTextElement.GetComponent<Text>().text = $"{ammo}";
+
         return true;
     }
 
@@ -121,6 +134,9 @@ public abstract class Cannon : MonoBehaviour
     protected void fire()
     {
         ammo--;
+        
+        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+
         if (cannonType != cheese.SHREDDED)
         {
             GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);

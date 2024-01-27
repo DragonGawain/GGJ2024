@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScoreText(int amount)
     {
-        var currentScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
+        var currentScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMeshProUGUI>();
         currentScoreText.text = $"Score: {amount}";
     }
 }
