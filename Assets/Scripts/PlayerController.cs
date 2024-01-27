@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
     GameObject progressBar;
     GameObject PBInstance;
 
+    [SerializeField]
+    GameObject loadBar;
+    GameObject LBInstance;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -93,15 +97,16 @@ public class PlayerController : MonoBehaviour
             {
                 Mine();
                 miningTimer = 0;
-                PBInstance = Instantiate(
-                    progressBar,
-                    new Vector3(
-                        deposit.gameObject.transform.position.x,
-                        deposit.gameObject.transform.position.y - 1,
-                        0
-                    ),
-                    Quaternion.identity
-                );
+                if (validMine)
+                    PBInstance = Instantiate(
+                        progressBar,
+                        new Vector3(
+                            deposit.gameObject.transform.position.x,
+                            deposit.gameObject.transform.position.y - 1,
+                            0
+                        ),
+                        Quaternion.identity
+                    );
             }
         }
 
@@ -112,6 +117,16 @@ public class PlayerController : MonoBehaviour
             {
                 LoadCannon();
                 cannonTimer = 0;
+                if (validCannon)
+                    LBInstance = Instantiate(
+                        loadBar,
+                        new Vector3(
+                            cannon.gameObject.transform.position.x,
+                            cannon.gameObject.transform.position.y - 1,
+                            0
+                        ),
+                        Quaternion.identity
+                    );
             }
         }
     }
@@ -151,6 +166,8 @@ public class PlayerController : MonoBehaviour
             cannonTimer = 0;
             cannonType = null;
             cannon = null;
+            if (LBInstance != null)
+                Destroy(LBInstance);
         }
     }
 
@@ -185,6 +202,15 @@ public class PlayerController : MonoBehaviour
         )
         {
             validCannon = true;
+            LBInstance = Instantiate(
+                loadBar,
+                new Vector3(
+                    cannon.gameObject.transform.position.x,
+                    cannon.gameObject.transform.position.y - 1,
+                    0
+                ),
+                Quaternion.identity
+            );
             // Cannon progress bar visualization?
         }
     }
@@ -197,6 +223,8 @@ public class PlayerController : MonoBehaviour
         cannonTimer = 0;
         if (PBInstance != null)
             Destroy(PBInstance);
+        if (LBInstance != null)
+            Destroy(LBInstance);
     }
 
     void Mine()
@@ -222,6 +250,7 @@ public class PlayerController : MonoBehaviour
         {
             validCannon = false;
             cannonTimer = 0;
+            carryingType = null;
         }
     }
 }

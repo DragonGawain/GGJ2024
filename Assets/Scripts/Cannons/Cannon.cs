@@ -121,7 +121,7 @@ public abstract class Cannon : MonoBehaviour
         }
         ammo++;
 
-        ammoCountTextElement.GetComponent<Text>().text = $"{ammo}";
+        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
 
         return true;
     }
