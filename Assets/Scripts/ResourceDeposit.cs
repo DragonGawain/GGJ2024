@@ -13,7 +13,7 @@ public class ResourceDeposit : MonoBehaviour
     int currentQuantity;
 
     // bool active = true;
-    cheese type = cheese.CURD; //just giving it a default to avoid potential bugs
+    cheese type; //just giving it a default to avoid potential bugs
 
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
@@ -42,18 +42,24 @@ public class ResourceDeposit : MonoBehaviour
     void Replenish()
     {
         int choice = Mathf.FloorToInt(Random.Range(0, 2.99f));
+        Debug.Log(choice);
+        GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
         switch (choice)
         {
             case 0:
                 type = cheese.MELTED;
+                GetComponent<SpriteRenderer>().color = new Color(1, 0.4674922f, 0);
                 break;
             case 1:
                 type = cheese.SHREDDED;
+                GetComponent<SpriteRenderer>().color = new Color(0, 0.07014704f, 1);
                 break;
             case 2:
                 type = cheese.CURD;
+                GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.8230386f);
                 break;
         }
+        Debug.Log(GetComponent<SpriteRenderer>().color);
         currentQuantity = replenishQuantity;
     }
 
