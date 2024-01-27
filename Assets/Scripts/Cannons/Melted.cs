@@ -8,11 +8,7 @@ public class Melted : Cannon
     void Awake()
     {
         cannonType = cheese.MELTED;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        cannonShell = Resources.Load<GameObject>("CannonShells/MeltedShot");
+        aimer = transform.GetChild(0);
     }
 }

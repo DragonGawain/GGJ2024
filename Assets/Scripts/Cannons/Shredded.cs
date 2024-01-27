@@ -8,11 +8,7 @@ public class Shredded : Cannon
     void Awake()
     {
         cannonType = cheese.SHREDDED;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        cannonShell = Resources.Load<GameObject>("CannonShells/ShreddedShot");
+        aimer = transform.GetChild(0);
     }
 }
