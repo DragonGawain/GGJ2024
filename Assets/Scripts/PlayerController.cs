@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Enable();
         inputs.Player.Mine.started += StartMine;
         inputs.Player.Mine.canceled += EndMine;
+        inputs.Player.Drop.performed += DropResources;
         // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
     }
@@ -225,6 +226,12 @@ public class PlayerController : MonoBehaviour
             Destroy(PBInstance);
         if (LBInstance != null)
             Destroy(LBInstance);
+    }
+
+    private void DropResources(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        carryingQuantity = 0;
+        carryingType = null;
     }
 
     void Mine()
