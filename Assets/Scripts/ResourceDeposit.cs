@@ -6,6 +6,10 @@ public class ResourceDeposit : MonoBehaviour
 {
     [SerializeField, Range(0, 20)]
     int maxQuantity = 5;
+    [SerializeField, Range(0, 20)]
+    int replensihTimerLimit = 2;
+    [SerializeField, Range(0, 20)]
+    int replenishQuantity = 5;
     int currentQuantity;
 
     // bool active = true;
@@ -31,7 +35,7 @@ public class ResourceDeposit : MonoBehaviour
         if (replensihTimer == 0)
         {
             Replenish();
-            replensihTimer = 2;
+            replensihTimer = replensihTimerLimit;
         }
     }
 
@@ -50,7 +54,7 @@ public class ResourceDeposit : MonoBehaviour
                 type = cheese.CURD;
                 break;
         }
-        currentQuantity = maxQuantity;
+        currentQuantity = replenishQuantity;
     }
 
     public cheese getType()
