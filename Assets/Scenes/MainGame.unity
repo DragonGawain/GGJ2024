@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deposit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 11
@@ -1040,6 +1044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deposit
       objectReference: {fileID: 0}
+    - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 7
@@ -1310,6 +1318,10 @@ PrefabInstance:
     - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: m_Name
       value: Deposit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
@@ -1702,6 +1714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISpace
       objectReference: {fileID: 0}
+    - target: {fileID: 2588860469374582939, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
 --- !u!1001 &4191621482037703722
@@ -1713,7 +1729,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: waveCountDown
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: availResources

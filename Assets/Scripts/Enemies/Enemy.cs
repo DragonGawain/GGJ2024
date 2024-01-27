@@ -104,11 +104,16 @@ public class Enemy : MonoBehaviour
         HP -= dmg;
         if (HP <= 0)
         {
-            Destroy(this.gameObject);
-
-            _gameManager.UpdateOnScreenEnemyCount(-1);
+            _gameManager.UpdateDefeatedEnemyCount(1);
 
             _gameManager.UpdateScore(scoreValue);
+
+            Destroy(this.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _gameManager.UpdateOnScreenEnemyCount(-1);
     }
 }

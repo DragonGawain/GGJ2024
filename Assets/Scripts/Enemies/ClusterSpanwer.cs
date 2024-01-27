@@ -7,7 +7,7 @@ public class ClusterSpanwer : MonoBehaviour
     [SerializeField]
     float radius = 3;
     [SerializeField]
-    int enemy_count = 5;
+    int enemy_count = 3;
 
 
     [SerializeField]
