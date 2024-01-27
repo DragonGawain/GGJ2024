@@ -8,11 +8,16 @@ public class Enemy : MonoBehaviour
     public Vector3 goal;
     Vector3 direction;
     protected int HP = 15;
+    protected int scoreValue = 500;
+    private GameManager _gameManager;
 
+    public static int counter;
     void Start()
     {
         direction = (goal - transform.position).normalized;
+        _gameManager.UpdateOnScreenEnemyCount(1);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -45,6 +50,10 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(this.gameObject);
+
+            _gameManager.UpdateOnScreenEnemyCount(-1);
+
+            _gameManager.UpdateScore(scoreValue);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -22,28 +23,44 @@ public class Spawner : MonoBehaviour
     float scale = 1;
     float small_rate = 0.8f;
 
+    [SerializeField]
+    private GameManager _gameManager;
+
+    bool _allowSpawns = false;
+
     Vector2 goal;
     void Start()
     {
+        _allowSpawns = _gameManager.GetSpawnStatus();
 
-        Transform moon = GameObject.Find("Moon").GetComponent<Transform>();
+        Transform moon = GameObject.FindGameObjectWithTag("Moon").GetComponent<Transform>();
         goal = moon.position;
 
         //float a= moon.localScale.x/ moon.localScale.y;
-        StartCoroutine(spawnWave());
+        //StartCoroutine(spawnWave());
     }
 
-
+    bool spawning = false;
+    private void Update()
+    {
+        if (_allowSpawns && !spawning) {
+            StartCoroutine(spawnWave());
+        }
+    }
     IEnumerator spawnWave()
     {
-        for (int enemy_count = 0; enemy_count < 15; enemy_count++)
-        {
-            if (Random.value < small_rate)
-                SpawnCluster();
-            else
-                SpawnBig();
-            yield return new WaitForSeconds(1);
-        }
+        spawning = true;
+
+        yield return new WaitForSeconds(1);
+
+        if (Random.value < small_rate)
+            SpawnCluster();
+        else
+            SpawnBig();
+
+        spawning = false;
+
+        _allowSpawns = _gameManager.GetSpawnStatus();
     }
 
     void SpawnBig()

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ClusterSpanwer : MonoBehaviour
 {
+    [SerializeField]
+    
+
     float radius = 3;
-    float enemy_count = 10;
+    [SerializeField]
+    int enemy_count = 10;
 
 
     [SerializeField]

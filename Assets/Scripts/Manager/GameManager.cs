@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine("BeginWaveCountDown");
     }
 
+    public bool GetSpawnStatus()
+    {
+        return allowSpawns;    
+    }
+
     private void PlaceNewSpawners()
     {
         // TODO
@@ -154,6 +159,11 @@ public class GameManager : MonoBehaviour
         {
             CompleteWave();
         }
+    }
+
+    public void UpdateScore(int amount)
+    {
+        currentScore += amount;
     }
 
     public void UpdateAvailableResources(int amount)
