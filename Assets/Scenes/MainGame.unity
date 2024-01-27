@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 522128635}
   - component: {fileID: 522128634}
   m_Layer: 0
-  m_Name: CheesyMoon
+  m_Name: Moon
   m_TagString: Moon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
