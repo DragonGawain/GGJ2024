@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
     GameObject marker;
 
     float scale = 1;
-    public float small_rate = 0.9f;
+    
 
     Vector2 goal;
     void Start()
