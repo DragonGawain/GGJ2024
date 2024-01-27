@@ -17,23 +17,20 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     float radius = 10;
 
-    [SerializeField]
-    GameObject marker;
-
     float scale = 1;
     float small_rate = 0.8f;
 
     [SerializeField]
     private GameManager _gameManager;
 
-    bool _allowSpawns = false;
+    bool _allowSpawns = true;
 
     Vector2 goal;
     void Start()
     {
-        Transform moon = GameObject.FindGameObjectWithTag("Moon").GetComponent<Transform>();
-        goal = moon.position;
 
+        //I am tired of using radians
+        angle = Mathf.Deg2Rad*angle;
         //float a= moon.localScale.x/ moon.localScale.y;
         //StartCoroutine(spawnWave());
     }
@@ -41,59 +38,78 @@ public class Spawner : MonoBehaviour
     bool spawning = false;
     private void Update()
     {
-        _allowSpawns = _gameManager.GetSpawnStatus();
-        Debug.Log("allowSpawns: " + _allowSpawns);
+        //_allowSpawns = _gameManager.GetSpawnStatus();
+        //Debug.Log("allowSpawns: " + _allowSpawns);
 
         if (_allowSpawns && !spawning) {
             StartCoroutine(spawnWave());
         }
     }
+
+
+    
     IEnumerator spawnWave()
     {
         spawning = true;
 
         yield return new WaitForSeconds(1);
 
+        float spawn_angle = Random.Range(-angle, angle);
+        Vector3 spawnPos = new Vector2(scale * Mathf.Sin(spawn_angle), Mathf.Cos(spawn_angle)) * radius;
+        goal = findNearestDeposit(spawnPos);
+        
         if (Random.value < small_rate)
-            SpawnCluster();
+            SpawnCluster(spawnPos);
         else
-            SpawnBig();
+            SpawnBig(spawnPos);
 
         spawning = false;
 
-        _allowSpawns = _gameManager.GetSpawnStatus();
+        //_allowSpawns = _gameManager.GetSpawnStatus();
     }
 
-    void SpawnBig()
+    void SpawnBig(Vector3 spawnPos)
     {
-
-        float p = Random.Range(-angle, angle);
 
         BigEnemy spawned = Instantiate(bigSpawner, transform);
-        spawned.transform.position = goal + new Vector2(scale * Mathf.Sin(p), Mathf.Cos(p)) * radius;
+        spawned.transform.position = spawnPos;
         spawned.goal = goal;
     }
 
-    void SpawnCluster()
+    void SpawnCluster(Vector3 spawnPos)
     {
-        
-        float p = Random.Range(-angle, angle);
 
         ClusterSpanwer spawned = Instantiate(clusterSpawner, transform);
-        spawned.transform.position = goal + new Vector2(scale * Mathf.Sin(p), Mathf.Cos(p)) * radius;
+        spawned.transform.position = spawnPos;
         spawned.goal = goal;
     }
 
 
-    void VisualizeRadius()
+    //Code for finding nearest deposit
+    Vector3 findNearestDeposit(Vector3 spawnPos)
     {
-        float i = -angle;
-        while (i < angle)
+
+        GameObject[] deposits = GameObject.FindGameObjectsWithTag("Deposit");
+        if (deposits.Length == 0)
         {
-            print(i);
-            GameObject m = Instantiate(marker, transform);
-            m.transform.position = goal + new Vector2(scale * Mathf.Sin(i), Mathf.Cos(i)) * radius;
-            i += 0.1f;
+            Debug.Log("SPAWNER CANNOT FIND DEPOSITS");
+            return Vector3.zero;
         }
+        GameObject minDeposit = deposits[0];
+
+        float minLength = (deposits[0].transform.position - spawnPos).magnitude;
+        for (int i = 1; i < deposits.Length; i++)
+        {
+            float length = (deposits[i].transform.position - spawnPos).magnitude;
+            if (length < minLength)
+            {
+                minLength = length;
+                minDeposit = deposits[i];
+            }
+        }
+        return minDeposit.transform.position;
     }
+
+    
+
 }

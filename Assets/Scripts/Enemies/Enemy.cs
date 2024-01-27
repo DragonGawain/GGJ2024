@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     float normalSpeed;
     float cheesSpeed;
     int cheeseTimer = 0;
-
-    public static int counter;
+    
     void Start()
     {
         direction = (goal - transform.position).normalized;
@@ -42,13 +41,13 @@ public class Enemy : MonoBehaviour
             isCheesed = false;
             cheeseTimer = 0;
         }
-        
 
         transform.Translate(direction * speed * Time.deltaTime);
 
         if ((transform.position - goal).magnitude < 1f)
         {
-            speed = 0;
+
+            normalSpeed = 0;
         }
     }
 
@@ -58,11 +57,11 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             int dmg = other.GetComponent<CannonShot>().getDamage();
-            TakeDamage(dmg);
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
                 isCheesed = true;
 
             Destroy(other.gameObject);
+            TakeDamage(dmg);
         }
         // Destroy(gameObject);
         //speed = 0;
