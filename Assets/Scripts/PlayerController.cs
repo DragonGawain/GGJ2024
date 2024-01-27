@@ -2,12 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum cheese
+{
+    MELTED,
+    SHREDDED, 
+    CURD
+}
 public class PlayerController : MonoBehaviour
 {
     Inputs inputs;
     Vector2 movementCode = new Vector2(0,0);
     Rigidbody2D body;
-    public float accel = 0.4f;
+    [SerializeField, Range(0, 20)] float accel = 0.4f;
+    [SerializeField, Range(0, 20)] float maxSpeed = 10;
+    [SerializeField, Range(0, 20)] float maxCarryCapacity = 10;
+    int carrying = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,7 +48,7 @@ public class PlayerController : MonoBehaviour
             body.velocity += new Vector2(0, -accel);
         }
 
-        body.velocity = Vector2.ClampMagnitude(body.velocity, 4);
+        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed/carrying);
 
         // if (body.velocity.magnitude > 0.1f)
         // {
