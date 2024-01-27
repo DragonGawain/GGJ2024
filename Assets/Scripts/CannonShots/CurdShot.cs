@@ -19,7 +19,9 @@ public class CurdShot : CannonShot
     {
         if (!hitDeathPlane)
         {
-            Vector2 angle = new Vector2(0, 0);
+            Debug.Log("mini");
+            Vector2 angle = new Vector2(1, 1);
+            angle.Normalize();
             for (int i = 0; i < miniShots; i++)
             {
                 GameObject shell = Instantiate(miniShell, transform.position, Quaternion.identity);
