@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public Vector3 goal;
     Vector3 direction;
+    protected int HP = 15;
 
     void Start()
     {
@@ -24,10 +25,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        // if other is a shot
+        if (other.gameObject.layer == 9)
+        {
+            int dmg = other.GetComponent<CannonShot>().getDamage();
+            TakeDamage(dmg);
+            Destroy(other.gameObject);
+        }
+        // Destroy(gameObject);
         //speed = 0;
 
+    }
+
+    protected void TakeDamage(int dmg)
+    {
+        HP -= dmg;
+        if (HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

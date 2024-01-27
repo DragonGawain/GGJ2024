@@ -40,10 +40,6 @@ public abstract class Cannon : MonoBehaviour
         //     Color.green,
         //     1
         // );
-        if (hit.collider != null)
-        {
-            Debug.Log("HIT");
-        }
         if (ammo > 0 && hit.collider != null && timer == 0)
         {
             fire();
@@ -123,19 +119,10 @@ public abstract class Cannon : MonoBehaviour
                     Quaternion.identity
                 );
                 float offset = Random.Range(-shredSpread, shredSpread);
-                Vector2 tempDir = rotate(dir, offset);
+                Vector2 tempDir = GameManager.rotate(dir, offset);
                 tempDir.Normalize();
                 shell.GetComponent<CannonShot>().StartMove(tempDir);
             }
         }
-    }
-
-    Vector2 rotate(Vector2 v, float delta)
-    {
-        delta *= Mathf.Deg2Rad;
-        return new Vector2(
-            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
-            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
-        );
     }
 }
