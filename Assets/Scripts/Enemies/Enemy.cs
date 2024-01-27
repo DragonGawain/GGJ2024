@@ -78,9 +78,14 @@ public class Enemy : MonoBehaviour
         {
             int dmg = other.GetComponent<CannonShot>().getDamage();
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
+            {
                 isCheesed = true;
-
-            Destroy(other.gameObject);
+                Destroy(other.gameObject, 2);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
             TakeDamage(dmg);
         }
         // if other is a deposit

@@ -12,7 +12,7 @@ public class Melted : Cannon
         aimer = transform.GetChild(0);
         range = 25;
         fireRate = 6 * 50;
-        rotation = 50;
+        rotation = 100;
         rotationTimer = Mathf.FloorToInt(rotation/2);
     }
 }

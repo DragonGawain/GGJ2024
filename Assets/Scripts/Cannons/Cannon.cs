@@ -22,7 +22,7 @@ public abstract class Cannon : MonoBehaviour
     protected int rotation = 0;
     protected int rotationTimer = 0;
     bool rotationDir = true;
-    float rotationSpeed = 0.2f;
+    float rotationSpeed = 0.35f;
 
     [SerializeField]
     private GameObject ammoCountTextElement;
@@ -134,7 +134,7 @@ public abstract class Cannon : MonoBehaviour
     protected void fire()
     {
         ammo--;
-        
+
         ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
 
         if (cannonType != cheese.SHREDDED)
