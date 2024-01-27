@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.54901963, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.46666667, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b63600136084054b8e402a8e21996bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: 0
+  ammo: 0
 --- !u!50 &8712329386474760655
 Rigidbody2D:
   serializedVersion: 4
