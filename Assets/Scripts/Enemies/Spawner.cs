@@ -7,13 +7,15 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    MiniEnemy enemy;
+    ClusterSpanwer enemy;
     
     [SerializeField]
     float angle = 90;
     [SerializeField]
     float radius = 10;
 
+    [SerializeField]
+    GameObject marker; 
     
     void Start()
     {
@@ -22,16 +24,28 @@ public class Spawner : MonoBehaviour
         /*float a= moon.localScale.x/ moon.localScale.y;*/ float a = 1;
         
 
-        print("Spawning");
+        for (int j = 0; j < 3; j++)
+        {
+            float p = Random.Range(-angle, angle);
+
+            ClusterSpanwer spawned = Instantiate(enemy, transform);
+            spawned.transform.position = goal + new Vector2(a * Mathf.Sin(p), Mathf.Cos(p)) * radius;
+            spawned.goal = goal;
+        }
+        
+        
+
         float i = -angle;
         while (i < angle)
         {
             print(i);
-            MiniEnemy spawned = Instantiate(enemy, transform);
-            spawned.transform.position = goal + new Vector2(a*Mathf.Sin(i), Mathf.Cos(i))*radius;
-            spawned.goal = goal;
-            i += 0.3f;
+            GameObject m = Instantiate(marker, transform);
+            m.transform.position = goal + new Vector2(a * Mathf.Sin(i), Mathf.Cos(i)) * radius;
+            i += 0.1f;
         }
+
+
+
     }
 
     // Update is called once per frame
