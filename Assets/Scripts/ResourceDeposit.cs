@@ -81,9 +81,9 @@ public class ResourceDeposit : MonoBehaviour
         return currentQuantity;
     }
 
-    public void eat()
+    public void eat(int qt)
     {
-        maxQuantity--;
+        maxQuantity -= qt;
         if (maxQuantity == 0)
         {
             Destroy(this.gameObject);

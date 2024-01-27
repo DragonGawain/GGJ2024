@@ -14,7 +14,12 @@ public class Enemy : MonoBehaviour
     float normalSpeed;
     float cheesSpeed;
     int cheeseTimer = 0;
-    
+    protected int eatTimerReset = 2 * 50;
+    int eatTimer = 0;
+    bool isEating = false;
+    ResourceDeposit deposit;
+    protected int eatAmount = 1;
+
     void Start()
     {
         direction = (goal - transform.position).normalized;
@@ -24,7 +29,6 @@ public class Enemy : MonoBehaviour
         normalSpeed = speed;
         cheesSpeed = speed * 0.66f;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
@@ -46,8 +50,16 @@ public class Enemy : MonoBehaviour
 
         if ((transform.position - goal).magnitude < 1f)
         {
-
             normalSpeed = 0;
+        }
+        if (isEating)
+        {
+            eatTimer++;
+            if (eatTimer == eatTimerReset)
+            {
+                eatTimer = 0;
+                deposit.eat(eatAmount);
+            }
         }
     }
 
@@ -63,9 +75,15 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             TakeDamage(dmg);
         }
+
+        // if other is a deposit
+        if (other.gameObject.layer == 6)
+        {
+            deposit = other.GetComponent<ResourceDeposit>();
+            isEating = true;
+        }
         // Destroy(gameObject);
         //speed = 0;
-
     }
 
     protected void TakeDamage(int dmg)
