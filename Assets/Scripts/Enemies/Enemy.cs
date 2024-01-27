@@ -49,8 +49,6 @@ public class Enemy : MonoBehaviour
             cheeseTimer = 0;
         }
 
-        
-
         if (isEating)
         {
             speed = 0;
@@ -88,10 +86,8 @@ public class Enemy : MonoBehaviour
         // if other is a deposit
         if (other.gameObject.layer == 6)
         {
-            
             deposit = other.GetComponent<ResourceDeposit>();
             isEating = true;
-            
         }
         // Destroy(gameObject);
         //speed = 0;
