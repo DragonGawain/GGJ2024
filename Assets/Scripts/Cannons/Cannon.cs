@@ -19,7 +19,8 @@ public abstract class Cannon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        fire();
+        if (ammo > 0)
+            fire();
     }
 
     public void UpgradeAmmo(int qt)
@@ -72,6 +73,7 @@ public abstract class Cannon : MonoBehaviour
         if (shoot)
         {
             shoot = false;
+            ammo--;
             GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
             Vector2 dir = new Vector2(
                 aimer.position.x - transform.position.x,
