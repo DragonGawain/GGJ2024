@@ -44,11 +44,13 @@ public class Enemy : MonoBehaviour
 
         transform.Translate(direction * speed * Time.deltaTime);
 
+        /*
         if ((transform.position - goal).magnitude < 1f)
         {
 
             normalSpeed = 0;
         }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,6 +64,13 @@ public class Enemy : MonoBehaviour
 
             Destroy(other.gameObject);
             TakeDamage(dmg);
+        }
+        //Touched a deposit
+        else if (other.gameObject.layer == 6)
+        {
+            Debug.Log("DIED");
+            Destroy(gameObject);
+            
         }
         // Destroy(gameObject);
         //speed = 0;

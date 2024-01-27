@@ -44,8 +44,12 @@ public class Spawner : MonoBehaviour
     bool spawning = false;
     private void Update()
     {
-        //_allowSpawns = _gameManager.GetSpawnStatus();
+        _allowSpawns = _gameManager.GetSpawnStatus();
         //Debug.Log("allowSpawns: " + _allowSpawns);
+
+
+        //DELETE LATER
+        _allowSpawns = true;
 
         if (_allowSpawns && !spawning) {
             StartCoroutine(spawnWave());
@@ -71,7 +75,7 @@ public class Spawner : MonoBehaviour
 
         spawning = false;
 
-        //_allowSpawns = _gameManager.GetSpawnStatus();
+        _allowSpawns = _gameManager.GetSpawnStatus();
     }
 
     void SpawnBig(Vector3 spawnPos)

@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbd355be4502e84eb25950a5465351a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 5
+  enemy_count: 5
   enemy: {fileID: 89848565, guid: 64fdf728326bb2843aa8e67745747e8a, type: 3}
   goal: {x: 0, y: 0}
