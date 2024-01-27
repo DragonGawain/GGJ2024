@@ -14,10 +14,16 @@ public class Spawner : MonoBehaviour
     
     [SerializeField]
     float angle = 90;
+    //Radius of spawn
     [SerializeField]
     float radius = 10;
 
+
+    //For if moon is curved, tho might throw away
     float scale = 1;
+
+    //Probability of mini spawning
+    [SerializeField, Range(0f, 1f)]
     float small_rate = 0.8f;
 
     [SerializeField]
