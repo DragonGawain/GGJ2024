@@ -14,7 +14,12 @@ public class Enemy : MonoBehaviour
     float normalSpeed;
     float cheesSpeed;
     int cheeseTimer = 0;
-    
+    protected int eatTimerReset = 2 * 50;
+    int eatTimer = 0;
+    bool isEating = false;
+    ResourceDeposit deposit;
+    protected int eatAmount = 1;
+
     void Start()
     {
         direction = (goal - transform.position).normalized;
@@ -24,7 +29,6 @@ public class Enemy : MonoBehaviour
         normalSpeed = speed;
         cheesSpeed = speed * 0.66f;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
@@ -44,13 +48,20 @@ public class Enemy : MonoBehaviour
 
         transform.Translate(direction * speed * Time.deltaTime);
 
-        /*
+        
         if ((transform.position - goal).magnitude < 1f)
         {
-
             normalSpeed = 0;
         }
-        */
+        if (isEating)
+        {
+            eatTimer++;
+            if (eatTimer == eatTimerReset)
+            {
+                eatTimer = 0;
+                deposit.eat(eatAmount);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,16 +76,14 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             TakeDamage(dmg);
         }
-        //Touched a deposit
-        else if (other.gameObject.layer == 6)
+        // if other is a deposit
+        if (other.gameObject.layer == 6)
         {
-            Debug.Log("DIED");
-            Destroy(gameObject);
-            
+            deposit = other.GetComponent<ResourceDeposit>();
+            isEating = true;
         }
         // Destroy(gameObject);
         //speed = 0;
-
     }
 
     protected void TakeDamage(int dmg)
