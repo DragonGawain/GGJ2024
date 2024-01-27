@@ -11,7 +11,10 @@ public class Spawner : MonoBehaviour
     ClusterSpanwer clusterSpawner;
     [SerializeField]
     BigEnemy bigSpawner;
-    
+
+
+    [SerializeField]
+    float SpawnRate;
     [SerializeField]
     float angle = 90;
     //Radius of spawn
@@ -62,7 +65,7 @@ public class Spawner : MonoBehaviour
     {
         spawning = true;
 
-        yield return new WaitForSeconds(1);
+        
 
         float spawn_angle = Random.Range(-angle, angle);
         Vector3 spawnPos = new Vector2(scale * Mathf.Sin(spawn_angle), Mathf.Cos(spawn_angle)) * radius;
@@ -73,8 +76,9 @@ public class Spawner : MonoBehaviour
         else
             SpawnBig(spawnPos);
 
-        spawning = false;
+        yield return new WaitForSeconds(SpawnRate);
 
+        spawning = false;
         _allowSpawns = _gameManager.GetSpawnStatus();
     }
 

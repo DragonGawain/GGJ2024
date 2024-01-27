@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clusterSpawner: {fileID: 2911593948854238660, guid: 2f60124d11cadba439af78fda330839c, type: 3}
   bigSpawner: {fileID: 5061515720470958933, guid: 5896fa8c54f53f24dbc9a8bf562df8c7, type: 3}
+  SpawnRate: 3
   angle: 1.5707964
   radius: 10
-  marker: {fileID: 0}
   small_rate: 0.8
+  _gameManager: {fileID: 0}

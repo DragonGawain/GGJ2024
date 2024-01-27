@@ -837,7 +837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2428562693629509003, guid: e4f514442f09b6648b76bae93849f180, type: 3}
       propertyPath: angle
-      value: 90
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428562693629509003, guid: e4f514442f09b6648b76bae93849f180, type: 3}
+      propertyPath: SpawnRate
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2428562693629509003, guid: e4f514442f09b6648b76bae93849f180, type: 3}
       propertyPath: _gameManager
