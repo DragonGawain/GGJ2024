@@ -1574,10 +1574,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 592218795, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
-      propertyPath: m_TagString
-      value: ScoreText
-      objectReference: {fileID: 0}
     - target: {fileID: 2588860468359175648, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1642,6 +1638,10 @@ PrefabInstance:
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: waveCountDown
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
+      propertyPath: availResources
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938461, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: m_RootOrder

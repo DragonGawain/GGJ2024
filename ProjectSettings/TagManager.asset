@@ -10,6 +10,7 @@ TagManager:
   - GameScreen
   - GameManager
   - ScoreText
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX
