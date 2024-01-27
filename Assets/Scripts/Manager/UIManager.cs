@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,8 +42,8 @@ public class UIManager : MonoBehaviour
     {
         currentActiveScreen.SetActive(false);
 
-        var pauseScreen = gameScreenList.Where(screen => screen.tag == "GameScreen").FirstOrDefault();
-        currentActiveScreen = pauseScreen;
+        var gameScreen = gameScreenList.Where(screen => screen.tag == "GameScreen").FirstOrDefault();
+        currentActiveScreen = gameScreen;
         currentActiveScreen.SetActive(true);
 
         Time.timeScale = 1.0f;
@@ -50,11 +51,21 @@ public class UIManager : MonoBehaviour
 
     public void EndGame()
     {
+        Debug.Log("currentGameScreen: " + currentActiveScreen);
+
         currentActiveScreen.SetActive(false);
 
-        var pauseScreen = gameScreenList.Where(screen => screen.tag == "GameOverScreen").FirstOrDefault();
-        currentActiveScreen = pauseScreen;
-        currentActiveScreen.SetActive(true);
+        var gameOverScreen = gameScreenList.Where(screen => screen.tag == "GameOverScreen").FirstOrDefault();
+        Debug.Log("gameOverScreen: " + gameOverScreen);
+        currentActiveScreen = gameOverScreen;
+        //currentActiveScreen.SetActive(true);
+
+        Time.timeScale = 0.0f;
+    }
+
+    public void RetryGame()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 
     public void OnButtonUIEvent(GameObject effectToCreate)
