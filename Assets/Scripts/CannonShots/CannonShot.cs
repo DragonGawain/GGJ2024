@@ -41,4 +41,9 @@ public abstract class CannonShot : MonoBehaviour
     {
         return damage;
     }
+
+    public cheese getShellType()
+    {
+        return shellType;
+    }
 }
