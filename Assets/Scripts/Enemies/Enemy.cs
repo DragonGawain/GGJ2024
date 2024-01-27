@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     bool isEating = false;
     ResourceDeposit deposit;
     protected int eatAmount = 1;
+    protected int eatCapacity = 2;
+    int amountEaten = 0;
 
     void Start()
     {
@@ -59,7 +62,15 @@ public class Enemy : MonoBehaviour
             if (eatTimer == eatTimerReset)
             {
                 eatTimer = 0;
-                deposit.eat(eatAmount);
+                if (amountEaten + eatAmount > eatCapacity)
+                    deposit.eat(eatCapacity - amountEaten);
+                else
+                    deposit.eat(eatAmount);
+                amountEaten += eatAmount;
+                if (amountEaten >= eatCapacity)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
