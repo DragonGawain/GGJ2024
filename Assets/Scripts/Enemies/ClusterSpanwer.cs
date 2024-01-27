@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ClusterSpanwer : MonoBehaviour
 {
-    float radius = 2;
-    float enemy_count = 5;
+    float radius = 3;
+    float enemy_count = 10;
 
 
     [SerializeField]
@@ -25,7 +25,5 @@ public class ClusterSpanwer : MonoBehaviour
             spawned.transform.position = positon;
             spawned.goal = goal;
         }
-        
-
     }
 }
