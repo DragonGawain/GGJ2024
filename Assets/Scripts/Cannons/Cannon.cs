@@ -16,6 +16,12 @@ public abstract class Cannon : MonoBehaviour
     float shredSpread = 20;
     int shredQuantity = 5;
 
+    // Set to half of the total angle from far left to far right (i.e. angle limit)
+    protected int rotation = 0;
+    protected int rotationTimer = 0;
+    bool rotationDir = true;
+    float rotationSpeed = 0.2f;
+
     // private void Awake()
     // {
     //     aimer = transform.GetChild(0);
@@ -38,7 +44,7 @@ public abstract class Cannon : MonoBehaviour
         //     new Vector2(transform.position.x, transform.position.y),
         //     dir * range,
         //     Color.green,
-        //     1
+        //     0.01f
         // );
         if (ammo > 0 && hit.collider != null && timer == 0)
         {
@@ -54,6 +60,17 @@ public abstract class Cannon : MonoBehaviour
         {
             timer = 0;
         }
+
+        rotationTimer++;
+        if (rotationTimer >= rotation)
+        {
+            rotationDir = !rotationDir;
+            rotationTimer = 0;
+        }
+        if (rotationDir)
+            transform.Rotate(0, 0, rotationSpeed);
+        if (!rotationDir)
+            transform.Rotate(0, 0, -rotationSpeed);
     }
 
     public void UpgradeAmmo(int qt)
