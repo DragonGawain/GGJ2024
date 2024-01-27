@@ -6,8 +6,10 @@ public class ResourceDeposit : MonoBehaviour
 {
     [SerializeField, Range(0, 20)]
     int maxQuantity = 5;
+
     [SerializeField, Range(0, 20)]
     int replensihTimerLimit = 2;
+
     [SerializeField, Range(0, 20)]
     int replenishQuantity = 5;
     int currentQuantity;
@@ -42,7 +44,6 @@ public class ResourceDeposit : MonoBehaviour
     void Replenish()
     {
         int choice = Mathf.FloorToInt(Random.Range(0, 2.99f));
-        Debug.Log(choice);
         GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
         switch (choice)
         {
@@ -59,7 +60,6 @@ public class ResourceDeposit : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.8230386f);
                 break;
         }
-        Debug.Log(GetComponent<SpriteRenderer>().color);
         currentQuantity = replenishQuantity;
     }
 
