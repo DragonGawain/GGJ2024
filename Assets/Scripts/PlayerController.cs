@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum cheese
 {
     MELTED,
-    SHREDDED, 
+    SHREDDED,
     CURD
 }
+
 public class PlayerController : MonoBehaviour
 {
     Inputs inputs;
-    Vector2 movementCode = new Vector2(0,0);
+    Vector2 movementCode = new Vector2(0, 0);
     Rigidbody2D body;
-    [SerializeField, Range(0, 20)] float accel = 0.4f;
-    [SerializeField, Range(0, 20)] float maxSpeed = 10;
-    [SerializeField, Range(0, 20)] float maxCarryCapacity = 10;
+
+    [SerializeField, Range(0, 20)]
+    float accel = 0.4f;
+
+    [SerializeField, Range(0, 20)]
+    float maxSpeed = 10;
+
+    [SerializeField, Range(0, 20)]
+    float maxCarryCapacity = 10;
     int carrying = 0;
-    cheese ?type = null;
+    cheese? carryingType = null;
 
     // Mining vars
     ResourceDeposit deposit;
-    cheese ?miningType = null;
+    cheese? miningType = null;
     bool validMine = false;
     int miningTimer = 0; // 30 FU's =  0.6 of a second
 
@@ -62,7 +68,7 @@ public class PlayerController : MonoBehaviour
             body.velocity += new Vector2(0, -accel);
         }
 
-        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed/carrying);
+        body.velocity = Vector2.ClampMagnitude(body.velocity, maxSpeed / (carrying / 5));
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
@@ -75,9 +81,9 @@ public class PlayerController : MonoBehaviour
             if (miningTimer >= 30)
             {
                 Mine();
+                miningTimer = 0;
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -102,8 +108,13 @@ public class PlayerController : MonoBehaviour
 
     private void StartMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        // if you're at a deposit, and you're either not carrying any cheese or the deposit is of the same type as what you're carrying, you can mine. 
-        if (miningType != null && (type == null || type == miningType))
+        // if you're at a deposit, and you're either not carrying any cheese or the deposit is of the same type as what you're carrying, you can mine.
+        if (
+            miningType != null
+            && (carryingType == null || carryingType == miningType)
+            && deposit.getQuantity() > 0
+            && carrying < maxCarryCapacity
+        )
         {
             validMine = true;
             Debug.Log("START");
@@ -119,11 +130,20 @@ public class PlayerController : MonoBehaviour
 
     void Mine()
     {
-
+        int check = deposit.reduceQuantity();
+        if (check >= 0)
+        {
+            carrying++;
+            carryingType = miningType;
+        }
+        else
+            validMine = false;
+        if (check == 0)
+            validMine = false;
     }
 
     void LoadCannon()
     {
-        
+        //
     }
 }
