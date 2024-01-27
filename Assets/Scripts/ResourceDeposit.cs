@@ -86,10 +86,10 @@ public class ResourceDeposit : MonoBehaviour
         maxQuantity -= qt;
         if (maxQuantity == 0)
         {
-            Destroy(this.gameObject);
-
             var gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             gameManager.UpdateAvailableResources(-1);
+
+            Destroy(this.gameObject);
         }
     }
 }
