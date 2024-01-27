@@ -49,15 +49,11 @@ public class Enemy : MonoBehaviour
             cheeseTimer = 0;
         }
 
-        transform.Translate(direction * speed * Time.deltaTime);
-
         
-        if ((transform.position - goal).magnitude < 1f)
-        {
-            normalSpeed = 0;
-        }
+
         if (isEating)
         {
+            speed = 0;
             eatTimer++;
             if (eatTimer == eatTimerReset)
             {
@@ -73,6 +69,8 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -90,8 +88,10 @@ public class Enemy : MonoBehaviour
         // if other is a deposit
         if (other.gameObject.layer == 6)
         {
+            
             deposit = other.GetComponent<ResourceDeposit>();
             isEating = true;
+            
         }
         // Destroy(gameObject);
         //speed = 0;
