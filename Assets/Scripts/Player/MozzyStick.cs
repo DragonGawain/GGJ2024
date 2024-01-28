@@ -18,15 +18,16 @@ public class MozzyStick : MonoBehaviour
 {
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
-    int replensihTimer = 2;
+    int replensihTimer = 5;
 
     [SerializeField, Range(0, 20)]
-    int replensihTimerLimit = 2;
+    int replensihTimerLimit = 5;
 
     [SerializeField]
     GameObject hitbox;
     bool hasStick = true;
     DIR lastDirection = DIR.E;
+
 
     public void ReplenishStickAttempt()
     {
@@ -57,30 +58,31 @@ public class MozzyStick : MonoBehaviour
         switch (lastDirection)
         {
             case DIR.E:
-                stick.transform.Rotate(new Vector3(0,0, 90));
+                stick.transform.Rotate(new Vector3(0, 0, 90));
                 break;
             case DIR.NE:
-                stick.transform.Rotate(new Vector3(0,0, 135));
+                stick.transform.Rotate(new Vector3(0, 0, 135));
                 break;
             case DIR.N:
-                stick.transform.Rotate(new Vector3(0,0, 180));
+                stick.transform.Rotate(new Vector3(0, 0, 180));
                 break;
             case DIR.NW:
-                stick.transform.Rotate(new Vector3(0,0, 225));
+                stick.transform.Rotate(new Vector3(0, 0, 225));
                 break;
             case DIR.W:
-                stick.transform.Rotate(new Vector3(0,0, 270));
+                stick.transform.Rotate(new Vector3(0, 0, 270));
                 break;
             case DIR.SW:
-                stick.transform.Rotate(new Vector3(0,0, 315));
+                stick.transform.Rotate(new Vector3(0, 0, 315));
                 break;
             case DIR.S:
                 break;
             case DIR.SE:
-                stick.transform.Rotate(new Vector3(0,0, 45));
+                stick.transform.Rotate(new Vector3(0, 0, 45));
                 break;
         }
-        Destroy(stick.gameObject, 1.0f);    }
+        Destroy(stick.gameObject, 0.5f);
+    }
 
     public void SetLastDir(DIR dir)
     {
