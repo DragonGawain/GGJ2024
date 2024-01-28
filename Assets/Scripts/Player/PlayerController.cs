@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
     void Mine()
     {
         int check = 0;
-        if (carryingType == deposit.getType())
+        if (carryingType == deposit.getType() || miningType == null)
         {
             if (carryingType == null)
             {
