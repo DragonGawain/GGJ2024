@@ -35,34 +35,24 @@ public class MozzyStick : MonoBehaviour
 
     public void ReplenishStickAttempt()
     {
-        Debug.Log("Attemp");
-        Debug.Log(hasStick);
         if (!hasStick)
         {
-            Debug.Log("Attemp 2");
             replenishTimer--;
-            Debug.Log(replenishTimer);
             if (replenishTimer == 0)
             {
                 ReplenishStick();
             }
         }
-        Debug.Log("METHOD END");
-        Debug.Log(hasStick);
-        Debug.Log(GetHasStick());
     }
 
     void ReplenishStick()
     {
-        Debug.Log("HIT");
         hasStick = true;
-        Debug.Log(hasStick);
         replenishTimer = replenishTimerLimit;
     }
 
     public void BigStickGoSmashySmashy()
     {
-        Debug.Log("BIG STICK");
         hasStick = false;
         GameObject stick = Instantiate(
             hitbox,
@@ -111,9 +101,7 @@ public class MozzyStick : MonoBehaviour
 
     IEnumerator DestroyOnDelay(GameObject stick)
     {
-        Debug.Log("WAITING");
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("BEGONE");
         Destroy(stick);
     }
 }
