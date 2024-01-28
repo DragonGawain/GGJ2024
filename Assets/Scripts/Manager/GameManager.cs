@@ -114,7 +114,6 @@ public class GameManager : MonoBehaviour
 
         var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyWave % 10 == 0 ? 2 : 1)));
         currentScore += waveCompletionScoreToAdd;
-        uiManager.UpdateScoreText(currentScore);
 
         ReplenishAllDeposits();
 
@@ -166,7 +165,7 @@ public class GameManager : MonoBehaviour
     {
         currentScore += amount;
 
-        uiManager.UpdateScoreText(currentScore);
+        uiManager.UpdateScoreText(amount);
     }
 
     public void UpdateAvailableResources(int amount)

@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb3389ae7084204dbb713a6567f0788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActiveScreen: {fileID: 2588860469374582939}
+  currentActiveScreen: {fileID: 7423699377383754504}
   gameScreenList:
   - {fileID: 2588860469374582939}
   - {fileID: 2588860469013643097}
@@ -1562,7 +1562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2302568850328155010
 RectTransform:
   m_ObjectHideFlags: 0
