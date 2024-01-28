@@ -10,7 +10,7 @@ public abstract class Cannon : MonoBehaviour
 {
     protected cheese cannonType;
     public int ammo = 0;
-    int maxAmmo = 10;
+    int maxAmmo = 9;
     protected GameObject cannonShell;
     protected Transform aimer;
     Vector2 dir;
