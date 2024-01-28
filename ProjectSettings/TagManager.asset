@@ -11,6 +11,7 @@ TagManager:
   - GameManager
   - ScoreText
   - GameOverScreen
+  - Enemy
   layers:
   - Default
   - TransparentFX
