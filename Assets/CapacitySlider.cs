@@ -37,7 +37,7 @@ public class CapacitySlider : MonoBehaviour
         if (player.carryingType == cheese.MELTED)
         {
             cheeseImage.enabled = true;
-            cheeseImage.sprite = null;
+            cheeseImage.sprite = images[2];
             cheeseImage.color = Color.yellow;
             
             fillImage.color = Color.yellow;
