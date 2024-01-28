@@ -475,6 +475,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Mine.canceled -= EndMine;
         inputs.Player.Drop.performed -= DropResources;
         inputs.Player.Caveman.performed -= Attack;
+        inputs.Player.Pause.performed -= OnPauseButton;
     }
 
     private void OnPauseButton(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
