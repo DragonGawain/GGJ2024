@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float waveCompletionMultiplier = 1.5f;
     [SerializeField]
-    private bool isPaused = false;
-    [SerializeField]
-    private bool isGameOver = false;
-    [SerializeField]
+    // private bool isPaused = false;
+    // [SerializeField]
+    // private bool isGameOver = false;
+    // [SerializeField]
     private int availResources = 5;
     [SerializeField]
     private UIManager uiManager;
@@ -41,11 +41,11 @@ public class GameManager : MonoBehaviour
     GameObject player;
     MozzyStick stick;
 
-    int passiveTimer = 20 * 50;
-    int attackTimer = 10 * 50;
+    // int passiveTimer = 20 * 50;
+    // int attackTimer = 10 * 50;
     // public for now so I can see the wave state
     public bool attackTime = false;
-    int timer = 0;
+    // int timer = 0;
 
     private void Awake()
     {
