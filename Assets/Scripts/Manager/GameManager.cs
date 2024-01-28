@@ -110,16 +110,18 @@ public class GameManager : MonoBehaviour
         }
         
         currentEnemyWave += 1;
+        enemiesDefated = 0;
         if (currentEnemyWave % waveCountTillNewSpawners == 0)
         {
             newSpawnerCount += 1;
 
             maxNumEnemies += 5;
+            
             maxOnScreenEnemyCount += Mathf.CeilToInt(maxNumEnemies / 2);
 
             PlaceNewSpawners();
         }
-
+        
         uiManager.UpdateWaveTextContent(currentEnemyWave);
 
         var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyWave % 10 == 0 ? 2 : 1)));
@@ -168,6 +170,8 @@ public class GameManager : MonoBehaviour
     public void UpdateDefeatedEnemyCount(int amount)
     {
         enemiesDefated += amount;
+        Debug.Log("Enemies defeated: "  +enemiesDefated);
+        Debug.Log("max enemies: "  + maxNumEnemies);
         if (enemiesDefated >= maxNumEnemies)
         {
             CompleteWave();

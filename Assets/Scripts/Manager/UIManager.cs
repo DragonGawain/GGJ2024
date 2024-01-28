@@ -14,8 +14,7 @@ public class UIManager : MonoBehaviour
     private List<GameObject> gameScreenList;
     [SerializeField]
     private GameObject buttonEffectContainer;
-    [SerializeField]
-    private GameObject waveCountText;
+    
 
 
     public void PauseGame()
@@ -76,6 +75,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWaveTextContent(int waveNum)
     {
-        waveCountText.GetComponent<TextMeshProUGUI>().text = $"Wave: {waveNum}";
+        FindObjectOfType<IAmGoingToExplode>().Wave(waveNum);
     }
 }

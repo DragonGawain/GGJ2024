@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _gameManager.UpdateOnScreenEnemyCount(1);
         normalSpeed = speed;
-        cheesSpeed = speed * 0.50f;
+        cheesSpeed = speed * 0.20f;
     }
 
     // Update is called once per frame
@@ -96,9 +96,11 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         // if other is a shot
         if (other.gameObject.layer == 9)
         {
+            
             int dmg = other.GetComponent<CannonShot>().getDamage();
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
             {
@@ -126,6 +128,7 @@ public class Enemy : MonoBehaviour
         HP -= dmg;
         if (HP <= 0)
         {
+
             _gameManager.UpdateDefeatedEnemyCount(1);
 
             _gameManager.UpdateScore(scoreValue);

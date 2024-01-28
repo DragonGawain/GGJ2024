@@ -950,6 +950,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   END: {fileID: 128165428}
+  GameScreen: {fileID: 2005200302}
+  waveCountText: {fileID: 1365239317}
 --- !u!1001 &1249586965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1165,6 +1167,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365239317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 298211906866412745, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+  m_PrefabInstance: {fileID: 2588860469035185774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1445477885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3359648052511313994, guid: d1ab8bd03be87a2428d150f955a59767, type: 3}
@@ -1704,6 +1711,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4187653960849894882, guid: 29a87fbc440a92f46a6d33e928438f2d, type: 3}
   m_PrefabInstance: {fileID: 1992606848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2005200302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2588860469374582939, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+  m_PrefabInstance: {fileID: 2588860469035185774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2068206628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1808,6 +1820,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253523638021033924, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+      propertyPath: m_text
+      value: 'Wave: 1'
+      objectReference: {fileID: 0}
     - target: {fileID: 2588860468359175648, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1879,11 +1895,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: waveCountDown
-      value: 15000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: availResources
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938461, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: m_RootOrder
