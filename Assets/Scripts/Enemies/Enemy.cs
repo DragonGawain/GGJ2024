@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
                 isCheesed = true;
                 Destroy(other.gameObject, 2);
             }
-            else
+            else if (other.GetComponent<CannonShot>().getShellType() != cheese.MOZZYSTICK)
             {
                 Destroy(other.gameObject);
             }
