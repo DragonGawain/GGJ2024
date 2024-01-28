@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     private bool allowSpawns = false;
     [SerializeField]
     private GameObject[] spawnerList = new GameObject[3];
-    [SerializeField]
-    private int newSpawnerCount = 2;
+    
     [SerializeField]
     private int waveCountTillNewSpawners = 3;
     [SerializeField]
