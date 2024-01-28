@@ -143,6 +143,22 @@ public class Enemy : MonoBehaviour
 
             _gameManager.UpdateScore(scoreValue);
 
+            var isBig = getBig();
+            if (isBig)
+            {
+                var bigEenemyDieSFX = Resources.Load<GameObject>("Sound/BiglEnemyDieSFXObject");
+                Instantiate(bigEenemyDieSFX);
+
+                Destroy(bigEenemyDieSFX, 2.0f);
+            }
+            else
+            {
+                var smallEenemyDieSFX = Resources.Load<GameObject>("Sound/SmallEnemyDieSFXObject");
+                Instantiate(smallEenemyDieSFX);
+
+                Destroy(smallEenemyDieSFX, 2.0f);
+            }
+
             Destroy(this.gameObject);
         }
     }

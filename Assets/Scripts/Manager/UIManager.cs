@@ -14,8 +14,14 @@ public class UIManager : MonoBehaviour
     private List<GameObject> gameScreenList;
     [SerializeField]
     private GameObject buttonEffectContainer;
-    
+    [SerializeField]
+    private AudioClip gameOverMusicClip;
+    private AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("MusicObject").GetComponent<AudioSource>();
+    }
 
     public void PauseGame()
     {
@@ -53,18 +59,28 @@ public class UIManager : MonoBehaviour
         currentActiveScreen = gameOverScreen;
         */
         //currentActiveScreen.SetActive(true);
+        audioSource.Stop();
+        audioSource.clip = gameOverMusicClip;
+        audioSource.loop = false;
+        audioSource.Play();
+
         FindObjectOfType<IAmGoingToExplode>().ENDME();
-        Time.timeScale = 1.0f;
+
+        Time.timeScale = 0.0f;
     }
 
     public void RetryGame()
     {
         SceneManager.LoadScene("MainGame");
+
+        Time.timeScale = 1.0f;
     }
 
     public void ExitGame()
     {
         SceneManager.LoadScene("TitleScreen");
+
+        Time.timeScale = 1.0f;
     }
 
     public void QuitGame()
