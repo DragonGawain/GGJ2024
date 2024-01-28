@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     protected bool isBig = false;
 
 
-    bool getBig()
+    public bool getBig()
     {
         return isBig;
     }
