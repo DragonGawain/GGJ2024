@@ -1512,6 +1512,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1339195993}
     m_Modifications:
+    - target: {fileID: 3931922022000968797, guid: 59e11e394410c1342abb3ae6acc32fcd, type: 3}
+      propertyPath: replenishTimer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931922022000968797, guid: 59e11e394410c1342abb3ae6acc32fcd, type: 3}
+      propertyPath: replenishTimerLimit
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4659881389703721310, guid: 59e11e394410c1342abb3ae6acc32fcd, type: 3}
       propertyPath: maxSpeed
       value: 4.7
