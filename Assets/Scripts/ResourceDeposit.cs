@@ -10,8 +10,8 @@ public class ResourceDeposit : MonoBehaviour
     [SerializeField, Range(0, 20)]
     int replensihTimerLimit = 2;
 
-    [SerializeField, Range(0, 20)]
-    int replenishQuantity = 5;
+    // [SerializeField, Range(0, 20)]
+    // int replenishQuantity = 5;
     int currentQuantity;
 
     // bool active = true;
@@ -22,7 +22,7 @@ public class ResourceDeposit : MonoBehaviour
     int replensihTimer = 2;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         currentQuantity = maxQuantity;
         Replenish();
@@ -48,18 +48,18 @@ public class ResourceDeposit : MonoBehaviour
         {
             case 0:
                 type = cheese.MELTED;
-                GetComponent<SpriteRenderer>().color = new Color(1, 0.4674922f, 0);
+                GetComponent<SpriteRenderer>().color = new Color(1, 0.4674922f, 0, 1);
                 break;
             case 1:
                 type = cheese.SHREDDED;
-                GetComponent<SpriteRenderer>().color = new Color(0, 0.07014704f, 1);
+                GetComponent<SpriteRenderer>().color = new Color(0, 0.07014704f, 1, 1);
                 break;
             case 2:
                 type = cheese.CURD;
-                GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.8230386f);
+                GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.8230386f, 1);
                 break;
         }
-        currentQuantity = replenishQuantity;
+        currentQuantity = maxQuantity;
     }
 
     public cheese getType()
@@ -75,6 +75,11 @@ public class ResourceDeposit : MonoBehaviour
     public int reduceQuantity()
     {
         currentQuantity--;
+        if (currentQuantity == 0)
+        {
+            Color col = GetComponent<SpriteRenderer>().color;
+            GetComponent<SpriteRenderer>().color = new Color(col.r, col.g, col.b, 0.5f);
+        }
         if (currentQuantity >= 0)
             return currentQuantity;
         currentQuantity = 0;
@@ -86,7 +91,9 @@ public class ResourceDeposit : MonoBehaviour
         maxQuantity -= qt;
         if (maxQuantity == 0)
         {
-            var gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            var gameManager = GameObject
+                .FindGameObjectWithTag("GameManager")
+                .GetComponent<GameManager>();
             gameManager.UpdateAvailableResources(-1);
 
             Destroy(this.gameObject);
