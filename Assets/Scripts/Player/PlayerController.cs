@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
     void Mine()
     {
         int check = 0;
-        if (carryingType == deposit.getType() || miningType == null)
+        if (carryingType == deposit.getType() || carryingType == null)
         {
             if (carryingType == null)
             {
@@ -394,6 +394,9 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        stick.BigStickGoSmashySmashy();
+        if (stick.GetHasStick())
+        {
+            stick.BigStickGoSmashySmashy();
+        }
     }
 }

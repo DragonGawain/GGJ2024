@@ -88,4 +88,9 @@ public class MozzyStick : MonoBehaviour
     {
         lastDirection = dir;
     }
+
+    public bool GetHasStick()
+    {
+        return hasStick;
+    }
 }

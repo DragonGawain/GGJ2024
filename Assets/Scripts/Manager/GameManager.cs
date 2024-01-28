@@ -68,28 +68,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        timer++;
-        switch (attackTime)
-        {
-            // attack wave
-            case true:
-                if (timer >= attackTimer)
-                {
-                    timer = 0;
-                    attackTime = false;
-                }
-                break;
-            // passive wave
-            case false:
-                if (timer >= passiveTimer)
-                {
-                    timer = 0;
-                    attackTime = true;
-                    ReplenishAllDeposits();
-                    stick.ReplenishStickAttempt();
-                }
-                break;
-        }
+        // timer++;
+        // switch (attackTime)
+        // {
+        //     // attack wave
+        //     case true:
+        //         if (timer >= attackTimer)
+        //         {
+        //             timer = 0;
+        //             attackTime = false;
+        //         }
+        //         break;
+        //     // passive wave
+        //     case false:
+        //         if (timer >= passiveTimer)
+        //         {
+        //             timer = 0;
+        //             attackTime = true;
+        //             ReplenishAllDeposits();
+        //             stick.ReplenishStickAttempt();
+        //         }
+        //         break;
+        // }
     }
 
     void ReplenishAllDeposits()
@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
         enemiesDefated = 0;
 
         ReplenishAllDeposits();
+        stick.ReplenishStickAttempt();
 
         StartCoroutine("BeginWaveCountDown");
     }
