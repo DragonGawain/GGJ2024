@@ -18,37 +18,51 @@ public class MozzyStick : MonoBehaviour
 {
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
-    int replensihTimer = 3;
+    int replenishTimer = 1;
 
     [SerializeField, Range(0, 20)]
-    int replensihTimerLimit = 3;
+    int replenishTimerLimit = 1;
 
     [SerializeField]
     GameObject hitbox;
-    bool hasStick = true;
+    bool hasStick = false;
     DIR lastDirection = DIR.E;
 
+    private void Awake()
+    {
+        ReplenishStick();
+    }
 
     public void ReplenishStickAttempt()
     {
+        Debug.Log("Attemp");
+        Debug.Log(hasStick);
         if (!hasStick)
         {
-            replensihTimer--;
-            if (replensihTimer == 0)
+            Debug.Log("Attemp 2");
+            replenishTimer--;
+            Debug.Log(replenishTimer);
+            if (replenishTimer == 0)
             {
                 ReplenishStick();
-                replensihTimer = replensihTimerLimit;
             }
         }
+        Debug.Log("METHOD END");
+        Debug.Log(hasStick);
+        Debug.Log(GetHasStick());
     }
 
     void ReplenishStick()
     {
+        Debug.Log("HIT");
         hasStick = true;
+        Debug.Log(hasStick);
+        replenishTimer = replenishTimerLimit;
     }
 
     public void BigStickGoSmashySmashy()
     {
+        Debug.Log("BIG STICK");
         hasStick = false;
         GameObject stick = Instantiate(
             hitbox,
@@ -81,7 +95,8 @@ public class MozzyStick : MonoBehaviour
                 stick.transform.Rotate(new Vector3(0, 0, 45));
                 break;
         }
-        Destroy(stick.gameObject, 0.5f);
+        StartCoroutine(DestroyOnDelay(stick));
+        // Destroy(stick, 1.5f);
     }
 
     public void SetLastDir(DIR dir)
@@ -92,5 +107,13 @@ public class MozzyStick : MonoBehaviour
     public bool GetHasStick()
     {
         return hasStick;
+    }
+
+    IEnumerator DestroyOnDelay(GameObject stick)
+    {
+        Debug.Log("WAITING");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("BEGONE");
+        Destroy(stick);
     }
 }
