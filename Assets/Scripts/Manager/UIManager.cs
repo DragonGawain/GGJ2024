@@ -15,17 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject buttonEffectContainer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PauseGame()
     {
@@ -51,16 +40,20 @@ public class UIManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("currentGameScreen: " + currentActiveScreen);
-
+        /*
+        var gameScreen = gameScreenList.Where(screen => screen.tag == "GameScreen").FirstOrDefault();
+        
+        currentActiveScreen = gameScreen;
         currentActiveScreen.SetActive(false);
-
+        Debug.Log("gameScreen: " + gameScreen);
+        Debug.Log("currentGameScreen: " + currentActiveScreen);
         var gameOverScreen = gameScreenList.Where(screen => screen.tag == "GameOverScreen").FirstOrDefault();
-        Debug.Log("gameOverScreen: " + gameOverScreen);
+        Debug.Log("gameScreen: " + gameOverScreen);
         currentActiveScreen = gameOverScreen;
+        */
         //currentActiveScreen.SetActive(true);
-
-        Time.timeScale = 0.0f;
+        FindObjectOfType<IAmGoingToExplode>().ENDME();
+        Time.timeScale = 1.0f;
     }
 
     public void RetryGame()
