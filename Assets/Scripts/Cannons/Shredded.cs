@@ -10,7 +10,7 @@ public class Shredded : Cannon
         cannonType = cheese.SHREDDED;
         cannonShell = Resources.Load<GameObject>("CannonShells/ShreddedShot");
         aimer = transform.GetChild(0);
-        range = 15;
+        range = 19f;
         fireRate = 4 * 50;
         rotation = 200;
         rotationTimer = Mathf.FloorToInt(rotation/Random.Range(1.5f, 3f));

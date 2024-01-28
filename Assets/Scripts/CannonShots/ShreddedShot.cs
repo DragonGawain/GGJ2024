@@ -8,6 +8,6 @@ public class ShreddedShot : CannonShot
     {
         body = GetComponent<Rigidbody2D>();
         shellType = cheese.SHREDDED;
-        damage = 2;
+        damage = 4;
     }
 }
