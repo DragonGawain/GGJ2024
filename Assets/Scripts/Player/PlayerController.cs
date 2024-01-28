@@ -79,20 +79,32 @@ public class PlayerController : MonoBehaviour
         movementCode = inputs.Player.Move.ReadValue<Vector2>();
         if (movementCode.x > 0)
         {
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+            this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+
             body.velocity += new Vector2(accel, 0);
         }
         else if (movementCode.x < 0)
         {
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+            this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+
             body.velocity += new Vector2(-accel, 0);
         }
 
         if (movementCode.y > 0)
         {
             body.velocity += new Vector2(0, accel);
+
+            this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
         }
         else if (movementCode.y < 0)
         {
             body.velocity += new Vector2(0, -accel);
+
+            this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
         }
 
         body.velocity = Vector2.ClampMagnitude(
@@ -110,6 +122,8 @@ public class PlayerController : MonoBehaviour
             miningTimer++;
             if (miningTimer >= 30)
             {
+                this.gameObject.GetComponent<Animator>().SetBool("isMining", true);
+
                 Mine();
                 miningTimer = 0;
                 if (validMine)
@@ -130,6 +144,8 @@ public class PlayerController : MonoBehaviour
             cannonTimer++;
             if (cannonTimer >= 20)
             {
+                this.gameObject.GetComponent<Animator>().SetBool("isReloading", true);
+
                 LoadCannon();
                 cannonTimer = 0;
                 if (validCannon)
@@ -301,6 +317,10 @@ public class PlayerController : MonoBehaviour
 
     private void EndMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
+        this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
+        
+        this.gameObject.GetComponent<Animator>().SetBool("isReloading", false);
+
         validMine = false;
         miningTimer = 0;
         validCannon = false;
@@ -326,9 +346,14 @@ public class PlayerController : MonoBehaviour
             // carryingType = miningType;
         }
         else
+        {
             validMine = false;
+        }
+
         if (check == 0 || carryingQuantity == maxCarryCapacity || carryingType != deposit.getType())
+        {
             validMine = false;
+        }
     }
 
     void LoadCannon()
