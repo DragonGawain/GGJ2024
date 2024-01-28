@@ -27,7 +27,7 @@ public class CapacitySlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(player.getCarryingQuantity() + " " +  player.getMaxCarryingCapacity());
+        
         slider.value = player.getCarryingQuantity() *1.0f/ player.getMaxCarryingCapacity();
         if (player.carryingType == cheese.MELTED)
         {

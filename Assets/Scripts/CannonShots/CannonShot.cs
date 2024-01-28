@@ -24,7 +24,7 @@ public abstract class CannonShot : MonoBehaviour
                 body.velocity *= 7;
                 break;
             case cheese.MINICURD:
-                body.velocity *= 4;
+                body.velocity *= 4.5f;
                 break;
         }
     }

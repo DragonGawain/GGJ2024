@@ -11,7 +11,7 @@ public class Melted : Cannon
         cannonShell = Resources.Load<GameObject>("CannonShells/MeltedShot");
         aimer = transform.GetChild(0);
         range = 25f;
-        fireRate = 6 * 50;
+        fireRate = 200;
         rotation = 125;
         rotationTimer = Mathf.FloorToInt(rotation/Random.Range(1.5f, 3f));
     }

@@ -11,7 +11,7 @@ public class Shredded : Cannon
         cannonShell = Resources.Load<GameObject>("CannonShells/ShreddedShot");
         aimer = transform.GetChild(0);
         range = 19f;
-        fireRate = 4 * 50;
+        fireRate = 150;
         rotation = 200;
         rotationTimer = Mathf.FloorToInt(rotation/Random.Range(1.5f, 3f));
     }
