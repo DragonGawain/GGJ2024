@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip reloadEffect;
     private AudioSource playerAudioSource;
+    [SerializeField]
+    private AudioClip walkCycleSFX;
 
     // Start is called before the first frame update
     void Awake()
@@ -89,6 +91,11 @@ public class PlayerController : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
 
             this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+
+            playerAudioSource.Stop();
+            playerAudioSource.clip = walkCycleSFX;
+            playerAudioSource.loop = false;
+            playerAudioSource.Play();
 
             body.velocity += new Vector2(accel, 0);
         }
