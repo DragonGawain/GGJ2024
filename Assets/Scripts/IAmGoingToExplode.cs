@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class IAmGoingToExplode : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class IAmGoingToExplode : MonoBehaviour
     public GameObject GameScreen;
     [SerializeField]
     private AudioClip gameOverMusicClip;
+    [SerializeField]
+    private EventSystem uiEventSystem;
+    [SerializeField]
+    private GameObject defaultSelectedButtonGameOver;
     public void ENDME()
     {
         AudioSource audioSource = GameObject.FindGameObjectWithTag("MusicObject").GetComponent<AudioSource>();
@@ -17,7 +22,9 @@ public class IAmGoingToExplode : MonoBehaviour
         audioSource.loop = false;
         audioSource.Play();
         GameScreen.SetActive(false);
-        
+
+        uiEventSystem.SetSelectedGameObject(defaultSelectedButtonGameOver);
+
         END.SetActive(true);
     }
 

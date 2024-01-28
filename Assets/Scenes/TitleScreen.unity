@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: buttonEffectContainer
       value: 
       objectReference: {fileID: 1644387124}
+    - target: {fileID: 2588860468359175649, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+      propertyPath: defaultSelectedButtonTitle
+      value: 
+      objectReference: {fileID: 1387385371}
     - target: {fileID: 2588860468359175651, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_Name
       value: UISpace
@@ -529,6 +533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+--- !u!1 &1387385371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 815611142, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+  m_PrefabInstance: {fileID: 1325629498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470576816
 GameObject:
   m_ObjectHideFlags: 0

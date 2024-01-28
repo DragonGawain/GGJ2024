@@ -62,6 +62,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""303b1eca-c581-4c8e-81ab-a700a759ee75"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -315,6 +324,28 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Caveman"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34b8a1c1-f665-481a-ac2e-0ee529ab79c7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f39f5bd-6e1e-45e8-b4a5-42380647d54a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -906,6 +937,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Player_Mine = m_Player.FindAction("Mine", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_Caveman = m_Player.FindAction("Caveman", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -981,6 +1013,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Mine;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_Caveman;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -989,6 +1022,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Mine => m_Wrapper.m_Player_Mine;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @Caveman => m_Wrapper.m_Player_Caveman;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1010,6 +1044,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Caveman.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaveman;
                 @Caveman.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaveman;
                 @Caveman.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaveman;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1026,6 +1063,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Caveman.started += instance.OnCaveman;
                 @Caveman.performed += instance.OnCaveman;
                 @Caveman.canceled += instance.OnCaveman;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1186,6 +1226,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnMine(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnCaveman(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

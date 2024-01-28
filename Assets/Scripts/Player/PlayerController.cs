@@ -66,6 +66,9 @@ public class PlayerController : MonoBehaviour
     private AudioClip walkCycleSFX;
     [SerializeField]
     private AudioClip miningCycleClip;
+    [SerializeField]
+    private UIManager inGameUIManager;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Mine.canceled += EndMine;
         inputs.Player.Drop.performed += DropResources;
         inputs.Player.Caveman.performed += Attack;
+        inputs.Player.Pause.performed += OnPauseButton;
         // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
         stick = GetComponent<MozzyStick>();
@@ -471,5 +475,17 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Mine.canceled -= EndMine;
         inputs.Player.Drop.performed -= DropResources;
         inputs.Player.Caveman.performed -= Attack;
+    }
+
+    private void OnPauseButton(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        if (!isPaused)
+        {
+            inGameUIManager.PauseGame();
+        }
+        else
+        {
+            inGameUIManager.ResumeGame();
+        }
     }
 }

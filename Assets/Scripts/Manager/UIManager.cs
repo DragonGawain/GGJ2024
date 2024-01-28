@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,7 +16,22 @@ public class UIManager : MonoBehaviour
     private List<GameObject> gameScreenList;
     [SerializeField]
     private GameObject buttonEffectContainer;
-    
+    [SerializeField]
+    private EventSystem uiEventSystem;
+    [SerializeField]
+    private GameObject defaultSelectedButtonPause;
+    [SerializeField]
+    private GameObject defaultSelectedButtonTitle;
+
+
+    private void Start()
+    {
+        var currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "TitleScreen")
+        {
+            uiEventSystem.SetSelectedGameObject(defaultSelectedButtonTitle);
+        }
+    }
 
     public void PauseGame()
     {
@@ -23,6 +40,8 @@ public class UIManager : MonoBehaviour
         var pauseScreen = gameScreenList.Where(screen => screen.tag == "PauseScreen").FirstOrDefault();
         currentActiveScreen = pauseScreen;
         currentActiveScreen.SetActive(true);
+
+        uiEventSystem.SetSelectedGameObject(defaultSelectedButtonPause);
 
         Time.timeScale = 0.0f;
     }
@@ -69,6 +88,8 @@ public class UIManager : MonoBehaviour
     public void ExitGame()
     {
         SceneManager.LoadScene("TitleScreen");
+
+        uiEventSystem.SetSelectedGameObject(defaultSelectedButtonTitle);
 
         Time.timeScale = 1.0f;
     }
