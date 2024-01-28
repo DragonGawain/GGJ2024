@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     private List<GameObject> gameScreenList;
     [SerializeField]
     private GameObject buttonEffectContainer;
+    [SerializeField]
+    private GameObject waveCountText;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,7 @@ public class UIManager : MonoBehaviour
         var gameOverScreen = gameScreenList.Where(screen => screen.tag == "GameOverScreen").FirstOrDefault();
         Debug.Log("gameOverScreen: " + gameOverScreen);
         currentActiveScreen = gameOverScreen;
-        //currentActiveScreen.SetActive(true);
+        currentActiveScreen.SetActive(true);
 
         Time.timeScale = 0.0f;
     }
@@ -77,5 +79,10 @@ public class UIManager : MonoBehaviour
     {
         var currentScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMeshProUGUI>();
         currentScoreText.text = $"Score: {amount}";
+    }
+
+    public void UpdateWaveTextContent(int waveNum)
+    {
+        waveCountText.GetComponent<TextMeshProUGUI>().text = $"Wave: {waveNum}";
     }
 }
