@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9203669523401717238, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
@@ -2173,6 +2173,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1216178069, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+      propertyPath: gameOverMusicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4689bf9425e968941b24e30418950ba0, type: 3}
     - target: {fileID: 2588860468359175648, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_RootOrder
       value: 2
