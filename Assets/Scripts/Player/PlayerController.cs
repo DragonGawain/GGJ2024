@@ -292,9 +292,17 @@ public class PlayerController : MonoBehaviour
                 ),
                 Quaternion.identity
             );
+            attackImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(false);
+
+            mineImageElement.SetActive(true);
+            this.gameObject.GetComponent<Animator>().SetBool("isMining", true);
             // Mining progress bar visualization?
         }
 
+        // MINE DEPOSIT (up)
+        // CANNON (down)
         if (
             cannonType != null
             && carryingType == cannonType
@@ -312,6 +320,12 @@ public class PlayerController : MonoBehaviour
                 ),
                 Quaternion.identity
             );
+            attackImageElement.SetActive(false);
+
+            mineImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(true);
+            this.gameObject.GetComponent<Animator>().SetBool("isReloading", true);
             // Cannon progress bar visualization?
         }
     }
@@ -398,6 +412,7 @@ public class PlayerController : MonoBehaviour
         if (stick.GetHasStick())
         {
             stick.BigStickGoSmashySmashy();
+            this.gameObject.GetComponent<Animator>().SetBool("isMining", true);
         }
     }
 }
