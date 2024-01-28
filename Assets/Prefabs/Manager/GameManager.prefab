@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEnemyWave: 1
-  waveCountDown: 30000
+  waveCountDown: 3000
   maxNumEnemies: 10
   maxOnScreenEnemyCount: 5
   currentEnemyCount: 0
@@ -56,7 +56,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  newSpawnerCount: 2
   waveCountTillNewSpawners: 3
   scoreOnWaveCompletion: 50000
   waveCompletionMultiplier: 1.5
@@ -65,3 +64,5 @@ MonoBehaviour:
   availResources: 5
   uiManager: {fileID: 2588860468359175649, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
   attackTime: 0
+  small_enemy_rate: 0.8
+  cluster_size: 3
