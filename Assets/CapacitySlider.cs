@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,10 @@ public class CapacitySlider : MonoBehaviour
     [SerializeField]
     Image fillImage;
 
+    [SerializeField]
+    Sprite[] images;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,22 +36,29 @@ public class CapacitySlider : MonoBehaviour
         slider.value = player.getCarryingQuantity() *1.0f/ player.getMaxCarryingCapacity();
         if (player.carryingType == cheese.MELTED)
         {
+            cheeseImage.enabled = true;
+            cheeseImage.sprite = null;
             cheeseImage.color = Color.yellow;
+            
             fillImage.color = Color.yellow;
         }
         else if (player.carryingType == cheese.SHREDDED)
         {
-            cheeseImage.color = Color.blue;
+            cheeseImage.enabled = true;
+            cheeseImage.sprite = images[1];
             fillImage.color = Color.blue;
         }
         else if (player.carryingType == cheese.CURD)
         {
-            cheeseImage.color = Color.cyan;
+            cheeseImage.enabled = true;
+            cheeseImage.sprite = images[0];
             fillImage.color = Color.cyan;
         }
         else
         {
-            cheeseImage.color = Color.white;
+            
+            cheeseImage.enabled = false;
+            //cheeseImage.color = Color.white;
             fillImage.color = Color.white;
         }
     }
