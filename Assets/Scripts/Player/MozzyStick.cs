@@ -18,10 +18,10 @@ public class MozzyStick : MonoBehaviour
 {
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
-    int replensihTimer = 5;
+    int replensihTimer = 3;
 
     [SerializeField, Range(0, 20)]
-    int replensihTimerLimit = 5;
+    int replensihTimerLimit = 3;
 
     [SerializeField]
     GameObject hitbox;
@@ -49,7 +49,7 @@ public class MozzyStick : MonoBehaviour
 
     public void BigStickGoSmashySmashy()
     {
-        // hasStick = false;
+        hasStick = false;
         GameObject stick = Instantiate(
             hitbox,
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
