@@ -117,6 +117,12 @@ public class Enemy : MonoBehaviour
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
             {
                 isCheesed = true;
+
+                var enemyCheesedSFX = Resources.Load<GameObject>("Sound/EnemyInMeltedCheeseSFXObject");
+                GameObject sound = Instantiate(enemyCheesedSFX);
+
+                Destroy(sound, 2.0f);
+
                 Destroy(other.gameObject, 2);
             }
             else if (other.GetComponent<CannonShot>().getShellType() != cheese.MOZZYSTICK)

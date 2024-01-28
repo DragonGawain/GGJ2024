@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5001351426139140202
+--- !u!1 &7393959541940023288
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5001351426139140204}
-  - component: {fileID: 5001351426139140203}
-  - component: {fileID: 5001351426139140205}
+  - component: {fileID: 7393959541940023294}
+  - component: {fileID: 7393959541940023289}
   m_Layer: 0
-  m_Name: MainGameMusicObject
-  m_TagString: MusicObject
+  m_Name: EnemyInMeltedCheeseSFXObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5001351426139140204
+--- !u!4 &7393959541940023294
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5001351426139140202}
+  m_GameObject: {fileID: 7393959541940023288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04497564, y: 7.227096, z: -0.17075077}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,19 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &5001351426139140203
+--- !u!82 &7393959541940023289
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5001351426139140202}
+  m_GameObject: {fileID: 7393959541940023288}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b01d8c68a2c4c5640a4901ef6fc034f2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 430fb7b66c95a734383440632c02881e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -129,19 +128,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5001351426139140205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5001351426139140202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109e21955ce24842a69f864600a1462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  singleUseGameMusic: {fileID: 8300000, guid: 7c0e4afb32b32094fbfb1ca161b170da, type: 3}
-  loopableGameMusic: {fileID: 8300000, guid: 69e2d7243ac02b143ba31fd768bac86c, type: 3}
-  titleMusic: {fileID: 8300000, guid: b01d8c68a2c4c5640a4901ef6fc034f2, type: 3}
-  loopableTitleMusic: {fileID: 8300000, guid: af35e36082c5f3b42be593f9d2f1fd2e, type: 3}

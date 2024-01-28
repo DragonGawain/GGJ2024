@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.8230386, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4f47bb9ac7a2bb74bafaec15855b5b62, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7573d9c9d82dbf04fa4e2013d2537e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeSoundEffect: {fileID: 8300000, guid: 564eead3b5276014bb7c7f85bd80eac6, type: 3}
 --- !u!82 &5492004458258885494
 AudioSource:
   m_ObjectHideFlags: 0
