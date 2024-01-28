@@ -47,6 +47,13 @@ public class PlayerController : MonoBehaviour
     GameObject loadBar;
     GameObject LBInstance;
 
+    [SerializeField]
+    private GameObject mineImageElement;
+    [SerializeField]
+    private GameObject reloadingImageElement;
+    [SerializeField]
+    private GameObject attackImageElement;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -135,14 +142,26 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // if other is a deposit
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 10)
         {
+            attackImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(false);
+
+            mineImageElement.SetActive(true);
+
             deposit = other.GetComponent<ResourceDeposit>();
             miningType = deposit.getType();
         }
         // if other is a cannon
         if (other.gameObject.layer == 7)
         {
+            attackImageElement.SetActive(false);
+
+            mineImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(true);
+
             cannon = other.GetComponent<Cannon>();
             cannonType = cannon.getType();
         }
@@ -151,8 +170,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         // if other is a deposit
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 10)
         {
+            mineImageElement.SetActive(false);
+
             validMine = false;
             miningTimer = 0;
             miningType = null;
@@ -163,6 +184,8 @@ public class PlayerController : MonoBehaviour
         // if other is a cannon
         if (other.gameObject.layer == 7)
         {
+            reloadingImageElement.SetActive(false);
+
             validCannon = false;
             cannonTimer = 0;
             cannonType = null;

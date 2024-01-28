@@ -10,7 +10,7 @@ public class Melted : Cannon
         cannonType = cheese.MELTED;
         cannonShell = Resources.Load<GameObject>("CannonShells/MeltedShot");
         aimer = transform.GetChild(0);
-        range = 25;
+        range = 12.5f;
         fireRate = 6 * 50;
         rotation = 100;
         rotationTimer = Mathf.FloorToInt(rotation/2);

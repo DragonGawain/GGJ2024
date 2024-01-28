@@ -12,6 +12,7 @@ TagManager:
   - ScoreText
   - GameOverScreen
   - Enemy
+  - MineTrigger
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Cannon
   - Enemy
   - Shot
-  - 
+  - MineTrigger
   - 
   - 
   - 
