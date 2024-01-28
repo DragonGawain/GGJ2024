@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour
         {
             validCannon = false;
             cannonTimer = 0;
-            carryingType = null;
+            // carryingType = null;
         }
     }
 
