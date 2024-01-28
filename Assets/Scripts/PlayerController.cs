@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     float maxSpeed = 10;
 
     [SerializeField, Range(0, 20)]
-    float maxCarryCapacity = 10;
+    int maxCarryCapacity = 10;
     int carryingQuantity = 0;
     cheese? carryingType = null;
 
@@ -49,8 +49,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject mineImageElement;
+
     [SerializeField]
     private GameObject reloadingImageElement;
+
     [SerializeField]
     private GameObject attackImageElement;
 
@@ -137,6 +139,38 @@ public class PlayerController : MonoBehaviour
                     );
             }
         }
+
+        if (
+            miningType != null
+            && (carryingType == null || carryingType == miningType)
+            && deposit.getQuantity() > 0
+            && carryingQuantity < maxCarryCapacity
+        )
+        {
+            attackImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(false);
+
+            mineImageElement.SetActive(true);
+        }
+        else
+            mineImageElement.SetActive(false);
+
+        if (
+            cannonType != null
+            && carryingType == cannonType
+            && !cannon.cannonFull()
+            && carryingQuantity > 0
+        )
+        {
+            attackImageElement.SetActive(false);
+
+            mineImageElement.SetActive(false);
+
+            reloadingImageElement.SetActive(true);
+        }
+        else
+            reloadingImageElement.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -144,24 +178,12 @@ public class PlayerController : MonoBehaviour
         // if other is a deposit
         if (other.gameObject.layer == 10)
         {
-            attackImageElement.SetActive(false);
-
-            reloadingImageElement.SetActive(false);
-
-            mineImageElement.SetActive(true);
-
             deposit = other.GetComponent<ResourceDeposit>();
             miningType = deposit.getType();
         }
         // if other is a cannon
         if (other.gameObject.layer == 7)
         {
-            attackImageElement.SetActive(false);
-
-            mineImageElement.SetActive(false);
-
-            reloadingImageElement.SetActive(true);
-
             cannon = other.GetComponent<Cannon>();
             cannonType = cannon.getType();
         }
@@ -172,8 +194,6 @@ public class PlayerController : MonoBehaviour
         // if other is a deposit
         if (other.gameObject.layer == 10)
         {
-            mineImageElement.SetActive(false);
-
             validMine = false;
             miningTimer = 0;
             miningType = null;
@@ -184,8 +204,6 @@ public class PlayerController : MonoBehaviour
         // if other is a cannon
         if (other.gameObject.layer == 7)
         {
-            reloadingImageElement.SetActive(false);
-
             validCannon = false;
             cannonTimer = 0;
             cannonType = null;
@@ -283,5 +301,15 @@ public class PlayerController : MonoBehaviour
             cannonTimer = 0;
             carryingType = null;
         }
+    }
+
+    public int getMaxCarryingCapacity()
+    {
+        return maxCarryCapacity;
+    }
+
+    public int getCarryingQuantity()
+    {
+        return carryingQuantity;
     }
 }
