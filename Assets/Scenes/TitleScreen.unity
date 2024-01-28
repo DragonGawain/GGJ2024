@@ -420,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 253523638021033924, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_text
-      value: Some Title
+      value: "\"Nah, I'd win\"\n\t- Ricky Rouse."
       objectReference: {fileID: 0}
     - target: {fileID: 253523638021033924, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
       propertyPath: m_fontColor.b

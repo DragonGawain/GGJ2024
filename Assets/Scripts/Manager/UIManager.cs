@@ -52,12 +52,7 @@ public class UIManager : MonoBehaviour
         currentActiveScreen = gameOverScreen;
         */
         //currentActiveScreen.SetActive(true);
-        /*
-        audioSource.Stop();
-        audioSource.clip = gameOverMusicClip;
-        audioSource.loop = false;
-        audioSource.Play();
-        */
+        
 
         FindObjectOfType<IAmGoingToExplode>().ENDME();
 
