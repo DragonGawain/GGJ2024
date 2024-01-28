@@ -617,7 +617,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave: 2'
+  m_text: 'Wave: 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -799,6 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2588860468359175648}
   - component: {fileID: 2588860468359175649}
+  - component: {fileID: 1216178069}
   m_Layer: 0
   m_Name: UISpace
   m_TagString: Untagged
@@ -841,6 +842,20 @@ MonoBehaviour:
   - {fileID: 2588860469013643097}
   - {fileID: 7423699377383754504}
   buttonEffectContainer: {fileID: 0}
+--- !u!114 &1216178069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2588860468359175651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4805830bd8e070840b27c1576f9fece7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  END: {fileID: 7423699377383754504}
+  GameScreen: {fileID: 2588860469374582939}
   waveCountText: {fileID: 298211906866412745}
 --- !u!1 &2588860468413835949
 GameObject:
