@@ -696,6 +696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainGameMusicObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5001351426139140203, guid: 8f0c6582e4766de4c96c02370eebd62b, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5001351426139140204, guid: 8f0c6582e4766de4c96c02370eebd62b, type: 3}
       propertyPath: m_RootOrder
       value: 4

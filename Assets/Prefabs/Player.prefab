@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4659881389703721310}
   - component: {fileID: 4659881389703721313}
   - component: {fileID: 4659881389703721311}
-  - component: {fileID: 283475367169669046}
+  - component: {fileID: 4194092326202366338}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -332,6 +332,8 @@ CapsuleCollider2D:
 --- !u!95 &283475367169669046
 Animator:
   serializedVersion: 5
+--- !u!114 &4194092326202366338
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -349,6 +351,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e855c819dba4902bce4715bac42e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replensihTimer: 2
+  replensihTimerLimit: 2
+  hitbox: {fileID: 7278178854054872317, guid: f81b2ca3e47274e468ac72863e0c1edc, type: 3}
 --- !u!1 &5377560182463900469
 GameObject:
   m_ObjectHideFlags: 0

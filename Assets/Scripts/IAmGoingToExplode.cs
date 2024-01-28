@@ -7,8 +7,15 @@ public class IAmGoingToExplode : MonoBehaviour
 {
     public GameObject END;
     public GameObject GameScreen;
+    [SerializeField]
+    private AudioClip gameOverMusicClip;
     public void ENDME()
     {
+        AudioSource audioSource = GameObject.FindGameObjectWithTag("MusicObject").GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = gameOverMusicClip;
+        audioSource.loop = false;
+        audioSource.Play();
         GameScreen.SetActive(false);
         
         END.SetActive(true);

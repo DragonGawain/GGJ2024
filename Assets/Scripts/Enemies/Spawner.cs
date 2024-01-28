@@ -41,7 +41,7 @@ public class Spawner : MonoBehaviour
         
         Transform moon = GameObject.FindGameObjectWithTag("Moon").transform;
         scale = moon.localScale.x/ moon.localScale.y;
-        //VisualizeRadius();
+        
         //StartCoroutine(spawnWave());
     }
 
