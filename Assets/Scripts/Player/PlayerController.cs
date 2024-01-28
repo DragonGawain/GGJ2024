@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject attackImageElement;
 
+    MozzyStick stick;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Drop.performed += DropResources;
         // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
+        stick = GetComponent<MozzyStick>();
     }
 
     // Update is called once per frame
@@ -171,6 +174,42 @@ public class PlayerController : MonoBehaviour
         }
         else
             reloadingImageElement.SetActive(false);
+
+        if (movementCode.magnitude != 0)
+        {
+            if (movementCode.x > 0 && movementCode.y == 0)
+            {
+                stick.SetLastDir(DIR.E);
+            }
+            else if (movementCode.x > 0 && movementCode.y > 0)
+            {
+                stick.SetLastDir(DIR.NE);
+            }
+            else if (movementCode.x == 0 && movementCode.y > 0)
+            {
+                stick.SetLastDir(DIR.N);
+            }
+            else if (movementCode.x < 0 && movementCode.y > 0)
+            {
+                stick.SetLastDir(DIR.NW);
+            }
+            else if (movementCode.x < 0 && movementCode.y == 0)
+            {
+                stick.SetLastDir(DIR.W);
+            }
+            else if (movementCode.x < 0 && movementCode.y < 0)
+            {
+                stick.SetLastDir(DIR.SW);
+            }
+            else if (movementCode.x == 0 && movementCode.y < 0)
+            {
+                stick.SetLastDir(DIR.S);
+            }
+            else if (movementCode.x > 0 && movementCode.y < 0)
+            {
+                stick.SetLastDir(DIR.SE);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
