@@ -689,7 +689,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74749521b8ac26a41a0b9a755181be23, type: 3}
   m_Color: {r: 1, g: 0.9772105, b: 0.6367924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -708,8 +708,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522128633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.6, z: 0}
-  m_LocalScale: {x: 32, y: 15, z: 1}
+  m_LocalPosition: {x: 0, y: -0.29, z: 0}
+  m_LocalScale: {x: 7.66, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1339195993}
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2428562693629509003, guid: e4f514442f09b6648b76bae93849f180, type: 3}
       propertyPath: angle
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2428562693629509003, guid: e4f514442f09b6648b76bae93849f180, type: 3}
       propertyPath: marker
@@ -2234,26 +2234,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
-      propertyPath: cluster_size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
-      propertyPath: waveCountDown
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
-      propertyPath: availResources
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
-      propertyPath: small_enemy_rate
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
-      propertyPath: waveCountTillNewSpawners
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938461, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -1123,6 +1123,7 @@ MonoBehaviour:
   - {fileID: 2588860469013643097}
   - {fileID: 7423699377383754504}
   buttonEffectContainer: {fileID: 0}
+  gameOverMusicClip: {fileID: 8300000, guid: 4689bf9425e968941b24e30418950ba0, type: 3}
 --- !u!114 &1216178069
 MonoBehaviour:
   m_ObjectHideFlags: 0
