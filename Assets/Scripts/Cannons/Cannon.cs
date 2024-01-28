@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public abstract class Cannon : MonoBehaviour
 {
     protected cheese cannonType;
     public int ammo = 0;
-    int maxAmmo = 10;
+    int maxAmmo = 9;
     protected GameObject cannonShell;
     protected Transform aimer;
     Vector2 dir;
@@ -35,7 +36,10 @@ public abstract class Cannon : MonoBehaviour
 
     private void Start()
     {
-        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+        var imageToLoad = ammo.ToString();
+
+        var ammoCountImage = this.gameObject.GetComponentInChildren<Image>();
+        ammoCountImage.sprite = Resources.Load<Sprite>("Images/" + imageToLoad);
     }
 
     private void FixedUpdate()
@@ -123,7 +127,10 @@ public abstract class Cannon : MonoBehaviour
         }
         ammo++;
 
-        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+        var imageToLoad = ammo.ToString();
+
+        var ammoCountImage = this.gameObject.GetComponentInChildren<Image>();
+        ammoCountImage.sprite = Resources.Load<Sprite>("Images/" + imageToLoad);
 
         return true;
     }
@@ -167,7 +174,12 @@ public abstract class Cannon : MonoBehaviour
 
         ammo--;
 
-        ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+        var imageToLoad = ammo.ToString();
+
+        var ammoCountImage = this.gameObject.GetComponentInChildren<Image>();
+        ammoCountImage.sprite = Resources.Load<Sprite>("Images/" + imageToLoad);
+
+        this.gameObject.GetComponent<AudioSource>().Play();
 
         if (cannonType != cheese.SHREDDED)
         {

@@ -103,5 +103,6 @@ public class MozzyStick : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         Destroy(stick);
+        this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
     }
 }

@@ -15,8 +15,13 @@ public class CurdShot : CannonShot
         miniShell = Resources.Load<GameObject>("CannonShells/MiniCurdShot");
     }
 
-    private void OnDestroy()
+    public void SpawnMinis()
     {
+        var bigEenemyDieSFX = Resources.Load<GameObject>("Sound/CheeseCurdShotImpactSFX");
+        GameObject sound = Instantiate(bigEenemyDieSFX);
+
+        Destroy(sound, 2.0f);
+
         if (!hitDeathPlane)
         {
             Vector2 angle = new Vector2(1, 1);
