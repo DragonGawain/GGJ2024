@@ -152,6 +152,8 @@ public class PlayerController : MonoBehaviour
                     );
             }
         }
+        else
+            this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
 
         if (validCannon)
         {
@@ -179,6 +181,8 @@ public class PlayerController : MonoBehaviour
                     );
             }
         }
+        else
+            this.gameObject.GetComponent<Animator>().SetBool("isReloading", false);
 
         if (
             miningType != null
