@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2a0f738bac92941b2126530c72c62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
+  ammo: 2
   ammoCountTextElement: {fileID: 0}
   reloadEffect: {fileID: 8300000, guid: 39694742a38ee0d44a07251a444e7a47, type: 3}
 --- !u!61 &4614060612458251937
