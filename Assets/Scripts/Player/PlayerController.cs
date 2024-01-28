@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Mine.started += StartMine;
         inputs.Player.Mine.canceled += EndMine;
         inputs.Player.Drop.performed += DropResources;
+        inputs.Player.Caveman.performed += Attack;
         // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
         stick = GetComponent<MozzyStick>();
@@ -355,5 +356,10 @@ public class PlayerController : MonoBehaviour
     public int getCarryingQuantity()
     {
         return carryingQuantity;
+    }
+
+    private void Attack(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        stick.BigStickGoSmashySmashy();
     }
 }
