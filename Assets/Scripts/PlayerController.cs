@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
-        dragForce = dragForce / 15;
+        dragForce = dragForce / 7.5f;
         body.velocity -= dragForce;
 
         if (validMine)
@@ -206,6 +206,7 @@ public class PlayerController : MonoBehaviour
         )
         {
             validMine = true;
+            carryingType = miningType;
             PBInstance = Instantiate(
                 progressBar,
                 new Vector3(
@@ -263,11 +264,11 @@ public class PlayerController : MonoBehaviour
         if (check >= 0)
         {
             carryingQuantity++;
-            carryingType = miningType;
+            // carryingType = miningType;
         }
         else
             validMine = false;
-        if (check == 0 || carryingQuantity == maxCarryCapacity)
+        if (check == 0 || carryingQuantity == maxCarryCapacity || carryingType != deposit.getType())
             validMine = false;
     }
 
