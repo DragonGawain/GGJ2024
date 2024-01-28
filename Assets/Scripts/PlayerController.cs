@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
         }
         else
             validMine = false;
-        if (check == 0)
+        if (check == 0 || carryingQuantity == maxCarryCapacity)
             validMine = false;
     }
 
