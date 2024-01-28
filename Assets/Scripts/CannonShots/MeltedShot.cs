@@ -21,8 +21,6 @@ public class MeltedShot : CannonShot
 
     private void FixedUpdate()
     {
-        Destroy(GetComponent<PolygonCollider2D>());
-        gameObject.AddComponent<PolygonCollider2D>();
         if (timer >= 125)
         {
             if (transform.localScale.x < maxSize)
@@ -33,6 +31,10 @@ public class MeltedShot : CannonShot
                 );
         }
         else
+        {
             timer++;
+            Destroy(GetComponent<PolygonCollider2D>());
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
     }
 }

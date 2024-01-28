@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 // using UnityEngine.Timeline;
 
 public abstract class Cannon : MonoBehaviour
@@ -28,6 +29,7 @@ public abstract class Cannon : MonoBehaviour
 
     [SerializeField]
     private GameObject ammoCountTextElement;
+
     [SerializeField]
     private AudioClip reloadEffect;
     private AudioSource cannonAudioSource;
@@ -191,12 +193,12 @@ public abstract class Cannon : MonoBehaviour
 
         this.gameObject.GetComponent<AudioSource>().Play();
 
-        if (cannonType != cheese.SHREDDED)
+        if (cannonType == cheese.CURD)
         {
             GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
             shell.GetComponent<CannonShot>().StartMove(dir);
         }
-        else
+        else if (cannonType == cheese.SHREDDED)
         {
             for (int i = 0; i < shredQuantity; i++)
             {
@@ -210,6 +212,15 @@ public abstract class Cannon : MonoBehaviour
                 tempDir.Normalize();
                 shell.GetComponent<CannonShot>().StartMove(tempDir);
             }
+        }
+        else if (cannonType == cheese.MELTED)
+        {
+            GameObject shell = Instantiate(
+                cannonShell,
+                transform.position + (new Vector3(dir.x, dir.y, 0) * 2.62f),
+                Quaternion.identity
+            );
+            shell.GetComponent<CannonShot>().StartMove(dir);
         }
     }
 }
