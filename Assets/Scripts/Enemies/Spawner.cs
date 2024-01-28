@@ -74,7 +74,7 @@ public class Spawner : MonoBehaviour
         else
             SpawnBig(spawnPos);
 
-        yield return new WaitForSeconds(SpawnRate);
+        yield return new WaitForSeconds(_gameManager.spawner_rate);
 
         spawning = false;
         _allowSpawns = _gameManager.GetSpawnStatus();
