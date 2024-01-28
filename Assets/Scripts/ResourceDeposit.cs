@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceDeposit : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class ResourceDeposit : MonoBehaviour
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
     int replensihTimer = 2;
+    [SerializeField]
+    private string[] depositImageNames = { "mineCurd", "mineMelted", "mineString" };
 
     // Start is called before the first frame update
     void Start()
@@ -48,15 +51,15 @@ public class ResourceDeposit : MonoBehaviour
         {
             case 0:
                 type = cheese.MELTED;
-                GetComponent<SpriteRenderer>().color = new Color(1, 0.4674922f, 0, 1);
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/" + depositImageNames[1]);
                 break;
             case 1:
                 type = cheese.SHREDDED;
-                GetComponent<SpriteRenderer>().color = new Color(0, 0.07014704f, 1, 1);
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/" + depositImageNames[2]);
                 break;
             case 2:
                 type = cheese.CURD;
-                GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.8230386f, 1);
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/" + depositImageNames[0]);
                 break;
         }
         currentQuantity = maxQuantity;
