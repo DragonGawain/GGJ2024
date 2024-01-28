@@ -10,7 +10,7 @@ public class Curd : Cannon
         cannonType = cheese.CURD;
         cannonShell = Resources.Load<GameObject>("CannonShells/CurdShot");
         aimer = transform.GetChild(0);
-        range = 20;
+        range = 16.5f;
         fireRate = 2 * 50;
         rotation = 166;
         rotationTimer = Mathf.FloorToInt(rotation/(Random.Range(1.5f, 3f)));

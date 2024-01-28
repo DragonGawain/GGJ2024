@@ -6,7 +6,7 @@ public class MiniEnemy : Enemy
 {
     private void Awake()
     {
-        HP = 6;
+        HP = 4;
         
     }
 }
