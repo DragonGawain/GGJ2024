@@ -24,15 +24,16 @@ public class Enemy : MonoBehaviour
     int amountEaten = 0;
     protected bool isBig = false;
 
-
     public bool getBig()
     {
         return isBig;
     }
+
     private void Awake()
     {
         isBig = false;
     }
+
     void Start()
     {
         goal = findNearestDeposit();
@@ -44,8 +45,7 @@ public class Enemy : MonoBehaviour
         {
             direction = (goal.transform.position - transform.position).normalized;
         }
-        
-        
+
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _gameManager.UpdateOnScreenEnemyCount(1);
         normalSpeed = speed;
@@ -100,7 +100,6 @@ public class Enemy : MonoBehaviour
             {
                 direction = (goal.transform.position - transform.position).normalized;
             }
-
         }
 
         transform.Translate(direction * speed * Time.deltaTime);
@@ -108,17 +107,17 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
         // if other is a shot
         if (other.gameObject.layer == 9)
         {
-            
             int dmg = other.GetComponent<CannonShot>().getDamage();
             if (other.GetComponent<CannonShot>().getShellType() == cheese.MELTED)
             {
                 isCheesed = true;
 
-                var enemyCheesedSFX = Resources.Load<GameObject>("Sound/EnemyInMeltedCheeseSFXObject");
+                var enemyCheesedSFX = Resources.Load<GameObject>(
+                    "Sound/EnemyInMeltedCheeseSFXObject"
+                );
                 GameObject sound = Instantiate(enemyCheesedSFX);
 
                 Destroy(sound, 2.0f);
@@ -127,6 +126,10 @@ public class Enemy : MonoBehaviour
             }
             else if (other.GetComponent<CannonShot>().getShellType() != cheese.MOZZYSTICK)
             {
+                if (other.GetComponent<CannonShot>().getShellType() == cheese.CURD)
+                {
+                    other.GetComponent<CurdShot>().SpawnMinis();
+                }
                 Destroy(other.gameObject);
             }
             TakeDamage(dmg);
@@ -146,7 +149,6 @@ public class Enemy : MonoBehaviour
         HP -= dmg;
         if (HP <= 0)
         {
-
             _gameManager.UpdateDefeatedEnemyCount(1);
 
             _gameManager.UpdateScore(scoreValue);
@@ -176,16 +178,12 @@ public class Enemy : MonoBehaviour
         _gameManager.UpdateOnScreenEnemyCount(-1);
     }
 
-
     //Code for finding nearest deposit
     GameObject findNearestDeposit()
     {
-
         GameObject[] deposits = GameObject.FindGameObjectsWithTag("Deposit");
         if (deposits.Length == 0)
         {
-
-            
             return null;
         }
         GameObject minDeposit = deposits[0];

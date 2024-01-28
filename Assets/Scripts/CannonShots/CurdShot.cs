@@ -15,7 +15,7 @@ public class CurdShot : CannonShot
         miniShell = Resources.Load<GameObject>("CannonShells/MiniCurdShot");
     }
 
-    private void OnDestroy()
+    public void SpawnMinis()
     {
         var bigEenemyDieSFX = Resources.Load<GameObject>("Sound/CheeseCurdShotImpactSFX");
         GameObject sound = Instantiate(bigEenemyDieSFX);

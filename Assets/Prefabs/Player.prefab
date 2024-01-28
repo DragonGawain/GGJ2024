@@ -364,8 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e855c819dba4902bce4715bac42e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  replensihTimer: 5
-  replensihTimerLimit: 5
+  replenishTimer: 3
+  replenishTimerLimit: 3
   hitbox: {fileID: 7278178854054872317, guid: f81b2ca3e47274e468ac72863e0c1edc, type: 3}
 --- !u!82 &7301539593342738792
 AudioSource:
