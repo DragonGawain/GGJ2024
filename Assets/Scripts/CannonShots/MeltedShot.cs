@@ -14,6 +14,10 @@ public class MeltedShot : CannonShot
         shellType = cheese.MELTED;
         damage = 2;
         maxSize = Random.Range(6f, 8f);
+        float funny = Random.Range(0f, 10f);
+        if (funny > 9)
+            maxSize = 999;
+
     }
 
     private void FixedUpdate()
