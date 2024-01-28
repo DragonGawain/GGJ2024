@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        this.gameObject.GetComponent<Animator>().SetInteger("Capacity", carryingQuantity);
         movementCode = inputs.Player.Move.ReadValue<Vector2>();
         if (movementCode.x > 0)
         {
