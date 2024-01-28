@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 20)]
     int maxCarryCapacity = 10;
     int carryingQuantity = 0;
-    cheese? carryingType = null;
+    public cheese? carryingType = null;
 
     // Mining vars
     ResourceDeposit deposit;

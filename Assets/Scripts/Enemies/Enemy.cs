@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour
         if (deposits.Length == 0)
         {
 
-            Debug.Log("SPAWNER CANNOT FIND DEPOSITS");
+            
             return null;
         }
         GameObject minDeposit = deposits[0];
