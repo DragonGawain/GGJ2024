@@ -10,4 +10,9 @@ public class MiniCurdShot : CannonShot
         shellType = cheese.MINICURD;
         damage = 4;
     }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(new Vector3(0,0,4.5f));
+    }
 }
