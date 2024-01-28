@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Spawner : MonoBehaviour
 {
@@ -37,10 +38,13 @@ public class Spawner : MonoBehaviour
     Vector2 goal;
     void Start()
     {
-
+        
         //I am tired of using radians
         angle = Mathf.Deg2Rad*angle;
-        //float a= moon.localScale.x/ moon.localScale.y;
+        
+        Transform moon = GameObject.FindGameObjectWithTag("Moon").transform;
+        scale = moon.localScale.x/ moon.localScale.y;
+        //VisualizeRadius();
         //StartCoroutine(spawnWave());
     }
 
@@ -95,9 +99,23 @@ public class Spawner : MonoBehaviour
         
     }
 
+    public GameObject marker;
+    void VisualizeRadius()
+    {
+        print("Testing radius");
+        float i = -angle;
+        while (i < angle)
+        {
+            
+            GameObject m = Instantiate(marker, transform);
+            m.transform.position = goal + new Vector2(scale * Mathf.Sin(i), Mathf.Cos(i)) * radius;
+            i += 0.025f;
+        }
+    }
 
-    
 
-    
+
+
+
 
 }
