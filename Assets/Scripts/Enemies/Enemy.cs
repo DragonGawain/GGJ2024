@@ -70,6 +70,8 @@ public class Enemy : MonoBehaviour
 
         if (isEating)
         {
+            this.gameObject.GetComponent<Animator>().SetBool("isEating", true);
+
             speed = 0;
             eatTimer++;
             if (eatTimer == eatTimerReset)
