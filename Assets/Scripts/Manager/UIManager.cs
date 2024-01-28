@@ -14,14 +14,7 @@ public class UIManager : MonoBehaviour
     private List<GameObject> gameScreenList;
     [SerializeField]
     private GameObject buttonEffectContainer;
-    [SerializeField]
-    private AudioClip gameOverMusicClip;
-    private AudioSource audioSource;
-
-    private void Awake()
-    {
-        audioSource = GameObject.FindGameObjectWithTag("MusicObject").GetComponent<AudioSource>();
-    }
+    
 
     public void PauseGame()
     {
