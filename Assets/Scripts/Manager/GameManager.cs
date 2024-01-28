@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemiesInScene[i]);
         }
-        print($"Wave: {currentEnemyWave}, rate: {small_enemy_rate}, cluster size {cluster_size}");
+        print($"Wave: {currentEnemyWave}, rate: {small_enemy_rate}, cluster size {cluster_size}, spawner rate {spawner_rate}, enemies to kill {maxOnScreenEnemyCount}, enemies defeated {enemiesDefated}");
         currentEnemyWave += 1;
         enemiesDefated = 0;
         if (currentEnemyWave % waveCountTillNewSpawners == 0)
