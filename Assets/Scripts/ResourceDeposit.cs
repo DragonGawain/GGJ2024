@@ -63,6 +63,7 @@ public class ResourceDeposit : MonoBehaviour
                 break;
         }
         currentQuantity = maxQuantity;
+        GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
     }
 
     public cheese getType()
@@ -80,8 +81,7 @@ public class ResourceDeposit : MonoBehaviour
         currentQuantity--;
         if (currentQuantity == 0)
         {
-            Color col = GetComponent<SpriteRenderer>().color;
-            GetComponent<SpriteRenderer>().color = new Color(col.r, col.g, col.b, 0.5f);
+            GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.5f);
         }
         if (currentQuantity >= 0)
             return currentQuantity;

@@ -33,8 +33,8 @@ public class MeltedShot : CannonShot
         else
         {
             timer++;
-            Destroy(GetComponent<PolygonCollider2D>());
-            gameObject.AddComponent<PolygonCollider2D>();
         }
+        Destroy(GetComponent<PolygonCollider2D>());
+        gameObject.AddComponent<PolygonCollider2D>();
     }
 }
