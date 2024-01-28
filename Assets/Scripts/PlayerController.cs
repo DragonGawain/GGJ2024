@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
-        dragForce = dragForce / 50;
+        dragForce = dragForce / 35;
         body.velocity -= dragForce;
 
         if (validMine)
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
         }
         else
             validMine = false;
-        if (check == 0)
+        if (check == 0 || carryingQuantity == maxCarryCapacity)
             validMine = false;
     }
 
@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
         bool check = cannon.increaseAmmo();
         if (check)
             carryingQuantity--;
-        if (carryingQuantity == 0)
+        if (carryingQuantity == 0 || cannon.cannonFull())
         {
             validCannon = false;
             cannonTimer = 0;

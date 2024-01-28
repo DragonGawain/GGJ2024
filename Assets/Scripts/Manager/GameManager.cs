@@ -100,6 +100,14 @@ public class GameManager : MonoBehaviour
     public void CompleteWave()
     {
         attackTime = false;
+
+        allowSpawns = false;
+
+        var enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemiesInScene.Length; i++)
+        {
+            Destroy(enemiesInScene[i]);
+        }
         
         currentEnemyWave += 1;
         if (currentEnemyWave % waveCountTillNewSpawners == 0)
@@ -112,8 +120,11 @@ public class GameManager : MonoBehaviour
             PlaceNewSpawners();
         }
 
+        uiManager.UpdateWaveTextContent(currentEnemyWave);
+
         var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyWave % 10 == 0 ? 2 : 1)));
         currentScore += waveCompletionScoreToAdd;
+        uiManager.UpdateScoreText(currentScore);
 
         ReplenishAllDeposits();
 
@@ -165,7 +176,7 @@ public class GameManager : MonoBehaviour
     {
         currentScore += amount;
 
-        uiManager.UpdateScoreText(amount);
+        uiManager.UpdateScoreText(currentScore);
     }
 
     public void UpdateAvailableResources(int amount)

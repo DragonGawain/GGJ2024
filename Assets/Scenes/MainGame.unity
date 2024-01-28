@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
@@ -1003,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388181803308740551, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
@@ -1760,11 +1760,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: waveCountDown
-      value: 3000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938460, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: availResources
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4191621481789938461, guid: cf16e06bd67783a42bcb267e7a2393de, type: 3}
       propertyPath: m_RootOrder
