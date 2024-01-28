@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     void ReplenishAllDeposits()
     {
-        GameObject[] deposits = GameObject.FindGameObjectsWithTag("Deposit");
+        GameObject[] deposits = GameObject.FindGameObjectsWithTag("MineTrigger");
         foreach (GameObject deposit in deposits)
         {
             deposit.GetComponent<ResourceDeposit>().ReplenishAttempt();
@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
         var waveCompletionScoreToAdd = Mathf.CeilToInt(scoreOnWaveCompletion * (waveCompletionMultiplier * (currentEnemyWave % 10 == 0 ? 2 : 1)));
         currentScore += waveCompletionScoreToAdd;
         uiManager.UpdateScoreText(currentScore);
+
+        enemiesDefated = 0;
 
         ReplenishAllDeposits();
 

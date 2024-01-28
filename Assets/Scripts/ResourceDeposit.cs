@@ -85,18 +85,4 @@ public class ResourceDeposit : MonoBehaviour
         currentQuantity = 0;
         return currentQuantity;
     }
-
-    public void eat(int qt)
-    {
-        maxQuantity -= qt;
-        if (maxQuantity == 0)
-        {
-            var gameManager = GameObject
-                .FindGameObjectWithTag("GameManager")
-                .GetComponent<GameManager>();
-            gameManager.UpdateAvailableResources(-1);
-
-            Destroy(this.gameObject);
-        }
-    }
 }
