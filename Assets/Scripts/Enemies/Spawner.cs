@@ -25,9 +25,7 @@ public class Spawner : MonoBehaviour
     //For if moon is curved, tho might throw away
     float scale = 1;
 
-    //Probability of mini spawning
-    [SerializeField, Range(0f, 1f)]
-    float small_rate = 0.8f;
+    
 
     [SerializeField]
     private GameManager _gameManager;
