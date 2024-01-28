@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 dragForce = new Vector2(body.velocity.x, body.velocity.y);
         dragForce.Normalize();
-        dragForce = dragForce / 35;
+        dragForce = dragForce / 15;
         body.velocity -= dragForce;
 
         if (validMine)
