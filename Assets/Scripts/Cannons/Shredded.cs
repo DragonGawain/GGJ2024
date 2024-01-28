@@ -12,7 +12,7 @@ public class Shredded : Cannon
         aimer = transform.GetChild(0);
         range = 15;
         fireRate = 4 * 50;
-        rotation = 175;
-        rotationTimer = Mathf.FloorToInt(rotation/2);
+        rotation = 200;
+        rotationTimer = Mathf.FloorToInt(rotation/Random.Range(1.5f, 3f));
     }
 }

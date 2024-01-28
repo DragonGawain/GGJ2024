@@ -12,7 +12,7 @@ public class Curd : Cannon
         aimer = transform.GetChild(0);
         range = 20;
         fireRate = 2 * 50;
-        rotation = 133;
-        rotationTimer = Mathf.FloorToInt(rotation/2);
+        rotation = 166;
+        rotationTimer = Mathf.FloorToInt(rotation/(Random.Range(1.5f, 3f)));
     }
 }

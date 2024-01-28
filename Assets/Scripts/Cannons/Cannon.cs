@@ -22,7 +22,7 @@ public abstract class Cannon : MonoBehaviour
     protected int rotation = 0;
     protected int rotationTimer = 0;
     bool rotationDir = true;
-    float rotationSpeed = 0.35f;
+    float rotationSpeed = 0.5f;
 
     [SerializeField]
     private GameObject ammoCountTextElement;
