@@ -218,7 +218,7 @@ public abstract class Cannon : MonoBehaviour
             GameObject shell = Instantiate(
                 cannonShell,
                 transform.position + (new Vector3(dir.x, dir.y, 0) * 2.62f),
-                Quaternion.identity
+                transform.rotation
             );
             shell.GetComponent<CannonShot>().StartMove(dir);
         }
