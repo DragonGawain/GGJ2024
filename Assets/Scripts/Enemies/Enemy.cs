@@ -22,7 +22,17 @@ public class Enemy : MonoBehaviour
     protected int eatAmount = 1;
     protected int eatCapacity = 2;
     int amountEaten = 0;
+    protected bool isBig = false;
 
+
+    bool getBig()
+    {
+        return isBig;
+    }
+    private void Awake()
+    {
+        isBig = false;
+    }
     void Start()
     {
         goal = findNearestDeposit();
