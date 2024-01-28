@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             {
                 small_enemy_rate -= 0.03f;
             }
-            cluster_size += 2;
+            cluster_size += 1;
         }
         
         uiManager.UpdateWaveTextContent(currentEnemyWave);
