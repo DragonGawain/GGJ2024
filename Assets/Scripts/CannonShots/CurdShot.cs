@@ -15,6 +15,11 @@ public class CurdShot : CannonShot
         miniShell = Resources.Load<GameObject>("CannonShells/MiniCurdShot");
     }
 
+    private void FixedUpdate()
+    {
+        transform.Rotate(new Vector3(0,0,7f));
+    }
+
     public void SpawnMinis()
     {
         var bigEenemyDieSFX = Resources.Load<GameObject>("Sound/CheeseCurdShotImpactSFX");
