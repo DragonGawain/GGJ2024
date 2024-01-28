@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _gameManager.UpdateOnScreenEnemyCount(1);
         normalSpeed = speed;
-        cheesSpeed = speed * 0.66f;
+        cheesSpeed = speed * 0.50f;
     }
 
     // Update is called once per frame
