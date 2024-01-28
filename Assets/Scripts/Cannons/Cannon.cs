@@ -169,6 +169,8 @@ public abstract class Cannon : MonoBehaviour
 
         ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
 
+        this.gameObject.GetComponent<AudioSource>().Play();
+
         if (cannonType != cheese.SHREDDED)
         {
             GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);

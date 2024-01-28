@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
 
     MozzyStick stick;
 
+    [SerializeField]
+    private AudioClip reloadEffect;
+    private AudioSource playerAudioSource;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -71,6 +75,8 @@ public class PlayerController : MonoBehaviour
         // inputs.Player.Mine.performed += Mine;
         body = GetComponent<Rigidbody2D>();
         stick = GetComponent<MozzyStick>();
+
+        playerAudioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -145,6 +151,11 @@ public class PlayerController : MonoBehaviour
             if (cannonTimer >= 20)
             {
                 this.gameObject.GetComponent<Animator>().SetBool("isReloading", true);
+
+                playerAudioSource.Stop();
+                playerAudioSource.clip = reloadEffect;
+                playerAudioSource.loop = false;
+                playerAudioSource.Play();
 
                 LoadCannon();
                 cannonTimer = 0;
