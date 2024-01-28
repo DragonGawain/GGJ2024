@@ -50,12 +50,12 @@ public abstract class Cannon : MonoBehaviour
             range,
             LayerMask.GetMask("Enemy")
         );
-        // Debug.DrawRay(
-        //     new Vector2(transform.position.x, transform.position.y),
-        //     dir * range,
-        //     Color.green,
-        //     0.01f
-        // );
+        Debug.DrawRay(
+            new Vector2(transform.position.x, transform.position.y),
+            dir * range,
+            Color.green,
+            0.01f
+        );
         if (ammo > 0 && hit.collider != null && timer == 0)
         {
             fire();
