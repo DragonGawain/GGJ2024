@@ -14,6 +14,7 @@ public abstract class Cannon : MonoBehaviour
     int maxAmmo = 9;
     protected GameObject cannonShell;
     protected Transform aimer;
+    protected Transform source;
     Vector2 dir;
     protected float range;
     int timer = 0;
@@ -36,7 +37,7 @@ public abstract class Cannon : MonoBehaviour
 
     // private void Awake()
     // {
-    //     aimer = transform.GetChild(0);
+    //     aimer = source.GetChild(0);
     // }
 
     private void Start()
@@ -52,18 +53,18 @@ public abstract class Cannon : MonoBehaviour
     private void FixedUpdate()
     {
         dir = new Vector2(
-            aimer.position.x - transform.position.x,
-            aimer.position.y - transform.position.y
+            aimer.position.x - source.position.x,
+            aimer.position.y - source.position.y
         );
         dir.Normalize();
         RaycastHit2D hit = Physics2D.Raycast(
-            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(source.position.x, source.position.y),
             dir,
             range,
             LayerMask.GetMask("Enemy")
         );
         Debug.DrawRay(
-            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(source.position.x, source.position.y),
             dir * range,
             Color.green,
             0.01f
@@ -160,7 +161,7 @@ public abstract class Cannon : MonoBehaviour
 
     //     if (cannonType != cheese.SHREDDED)
     //     {
-    //         GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
+    //         GameObject shell = Instantiate(cannonShell, source.position, Quaternion.identity);
     //         shell.GetComponent<CannonShot>().StartMove(dir);
     //     }
     //     else
@@ -169,7 +170,7 @@ public abstract class Cannon : MonoBehaviour
     //         {
     //             GameObject shell = Instantiate(
     //                 cannonShell,
-    //                 transform.position,
+    //                 source.position,
     //                 Quaternion.identity
     //             );
     //             float offset = Random.Range(-shredSpread, shredSpread);
@@ -195,7 +196,7 @@ public abstract class Cannon : MonoBehaviour
 
         if (cannonType == cheese.CURD)
         {
-            GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
+            GameObject shell = Instantiate(cannonShell, source.position, Quaternion.identity);
             shell.GetComponent<CannonShot>().StartMove(dir);
         }
         else if (cannonType == cheese.SHREDDED)
@@ -203,7 +204,7 @@ public abstract class Cannon : MonoBehaviour
             for (int i = 0; i < shredQuantity; i++)
             {
                 float offset = Random.Range(-shredSpread, shredSpread);
-                GameObject shell = Instantiate(cannonShell, transform.position, transform.rotation);
+                GameObject shell = Instantiate(cannonShell, source.position, source.rotation);
                 shell.transform.Rotate(new Vector3(0, 0, 90 + offset));
                 Vector2 tempDir = GameManager.rotate(dir, offset);
                 tempDir.Normalize();
@@ -214,8 +215,8 @@ public abstract class Cannon : MonoBehaviour
         {
             GameObject shell = Instantiate(
                 cannonShell,
-                transform.position + (new Vector3(dir.x, dir.y, 0) * 2.62f),
-                transform.rotation
+                source.position + (new Vector3(dir.x, dir.y, 0) * 2.62f),
+                source.rotation
             );
             shell.GetComponent<CannonShot>().StartMove(dir);
         }
