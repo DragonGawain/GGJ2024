@@ -202,12 +202,9 @@ public abstract class Cannon : MonoBehaviour
         {
             for (int i = 0; i < shredQuantity; i++)
             {
-                GameObject shell = Instantiate(
-                    cannonShell,
-                    transform.position,
-                    Quaternion.identity
-                );
                 float offset = Random.Range(-shredSpread, shredSpread);
+                GameObject shell = Instantiate(cannonShell, transform.position, transform.rotation);
+                shell.transform.Rotate(new Vector3(0, 0, 90 + offset));
                 Vector2 tempDir = GameManager.rotate(dir, offset);
                 tempDir.Normalize();
                 shell.GetComponent<CannonShot>().StartMove(tempDir);
