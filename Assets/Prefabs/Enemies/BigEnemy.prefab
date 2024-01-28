@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5061515720470958933}
   - component: {fileID: -1944663783535518362}
   - component: {fileID: -5918348303285704849}
+  - component: {fileID: 7393933789569487828}
   m_Layer: 8
   m_Name: BigEnemy
   m_TagString: Enemy
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.2264151, g: 0.05873977, b: 0.05873977, a: 1}
+  m_Sprite: {fileID: -254013699, guid: 88514fc497d4d1f47b8ba58c5bf991aa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   goal: {fileID: 0}
-  dieSFXClip: {fileID: 8300000, guid: 847f4dfd40b01254d8de1caec99babfc, type: 3}
 --- !u!58 &-1944663783535518362
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -214,3 +214,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7393933789569487828
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123962012844987848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 375f03058be21e846a86e3b315b5bbef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
