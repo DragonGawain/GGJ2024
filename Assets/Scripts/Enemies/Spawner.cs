@@ -71,7 +71,7 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPos = new Vector2(scale * Mathf.Sin(spawn_angle), Mathf.Cos(spawn_angle)) * radius;
         
         
-        if (Random.value < small_rate)
+        if (Random.value < _gameManager.small_enemy_rate)
             SpawnCluster(spawnPos);
         else
             SpawnBig(spawnPos);
@@ -94,6 +94,7 @@ public class Spawner : MonoBehaviour
     {
 
         ClusterSpanwer spawned = Instantiate(clusterSpawner, transform);
+        spawned.enemy_count = _gameManager.cluster_size;
         spawned.transform.position = spawnPos;
         
     }

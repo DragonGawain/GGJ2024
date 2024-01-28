@@ -97,6 +97,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Range(0,1f)]
+    public float small_enemy_rate = 1f;
+
+    
+    public int cluster_size = 1;
+
+
+    
     public void CompleteWave()
     {
         attackTime = false;
@@ -108,18 +116,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemiesInScene[i]);
         }
-        
+        print($"Wave: {currentEnemyWave}, rate: {small_enemy_rate}, cluster size {cluster_size}");
         currentEnemyWave += 1;
         enemiesDefated = 0;
         if (currentEnemyWave % waveCountTillNewSpawners == 0)
         {
-            newSpawnerCount += 1;
-
-            maxNumEnemies += 5;
             
-            maxOnScreenEnemyCount += Mathf.CeilToInt(maxNumEnemies / 2);
-
-            PlaceNewSpawners();
+            if (small_enemy_rate >= 0.5f)
+            {
+                small_enemy_rate -= 0.03f;
+            }
+            cluster_size += 1;
         }
         
         uiManager.UpdateWaveTextContent(currentEnemyWave);
@@ -170,8 +177,7 @@ public class GameManager : MonoBehaviour
     public void UpdateDefeatedEnemyCount(int amount)
     {
         enemiesDefated += amount;
-        Debug.Log("Enemies defeated: "  +enemiesDefated);
-        Debug.Log("max enemies: "  + maxNumEnemies);
+        
         if (enemiesDefated >= maxNumEnemies)
         {
             CompleteWave();
