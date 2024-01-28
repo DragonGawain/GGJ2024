@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
         enemiesDefated = 0;
 
         ReplenishAllDeposits();
+        stick.ReplenishStickAttempt();
 
         StartCoroutine("BeginWaveCountDown");
     }
