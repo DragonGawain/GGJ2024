@@ -59,11 +59,13 @@ public class PlayerController : MonoBehaviour
 
     MozzyStick stick;
 
-    [SerializeField]
-    private AudioClip reloadEffect;
+    //[SerializeField]
+    //private AudioClip reloadEffect;
     private AudioSource playerAudioSource;
     [SerializeField]
     private AudioClip walkCycleSFX;
+    [SerializeField]
+    private AudioClip miningCycleClip;
 
     // Start is called before the first frame update
     void Awake()
@@ -92,10 +94,10 @@ public class PlayerController : MonoBehaviour
 
             this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
 
-            playerAudioSource.Stop();
-            playerAudioSource.clip = walkCycleSFX;
-            playerAudioSource.loop = false;
-            playerAudioSource.Play();
+            //playerAudioSource.Stop();
+            //playerAudioSource.clip = walkCycleSFX;
+            //playerAudioSource.loop = false;
+            //playerAudioSource.Play();
 
             body.velocity += new Vector2(accel, 0);
         }
@@ -105,6 +107,11 @@ public class PlayerController : MonoBehaviour
 
             this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
 
+            //playerAudioSource.Stop();
+            //playerAudioSource.clip = walkCycleSFX;
+            //playerAudioSource.loop = false;
+            //playerAudioSource.Play();
+
             body.velocity += new Vector2(-accel, 0);
         }
 
@@ -113,12 +120,22 @@ public class PlayerController : MonoBehaviour
             body.velocity += new Vector2(0, accel);
 
             this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+
+            //playerAudioSource.Stop();
+            //playerAudioSource.clip = walkCycleSFX;
+            //playerAudioSource.loop = false;
+            //playerAudioSource.Play();
         }
         else if (movementCode.y < 0)
         {
             body.velocity += new Vector2(0, -accel);
 
             this.gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+
+            //playerAudioSource.Stop();
+            //playerAudioSource.clip = walkCycleSFX;
+            //playerAudioSource.loop = false;
+            //playerAudioSource.Play();
         }
 
         body.velocity = Vector2.ClampMagnitude(
@@ -138,6 +155,11 @@ public class PlayerController : MonoBehaviour
             {
                 this.gameObject.GetComponent<Animator>().SetBool("isMining", true);
 
+                playerAudioSource.Stop();
+                playerAudioSource.clip = miningCycleClip;
+                playerAudioSource.loop = true;
+                playerAudioSource.Play();
+
                 Mine();
                 miningTimer = 0;
                 if (validMine)
@@ -153,7 +175,11 @@ public class PlayerController : MonoBehaviour
             }
         }
         else
+        {
             this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
+
+            playerAudioSource.Stop();
+        }
 
         if (validCannon)
         {
@@ -162,10 +188,10 @@ public class PlayerController : MonoBehaviour
             {
                 this.gameObject.GetComponent<Animator>().SetBool("isReloading", true);
 
-                playerAudioSource.Stop();
-                playerAudioSource.clip = reloadEffect;
-                playerAudioSource.loop = false;
-                playerAudioSource.Play();
+                //playerAudioSource.Stop();
+                //playerAudioSource.clip = reloadEffect;
+                //playerAudioSource.loop = false;
+                //playerAudioSource.Play();
 
                 LoadCannon();
                 cannonTimer = 0;
@@ -333,6 +359,7 @@ public class PlayerController : MonoBehaviour
         )
         {
             validCannon = true;
+
             LBInstance = Instantiate(
                 loadBar,
                 new Vector3(
