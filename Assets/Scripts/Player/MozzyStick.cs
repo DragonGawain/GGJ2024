@@ -18,26 +18,29 @@ public class MozzyStick : MonoBehaviour
 {
     // number of attack waves that need to pass for this resource deposit to replenish
     [SerializeField, Range(0, 20)]
-    int replensihTimer = 3;
+    int replenishTimer = 1;
 
     [SerializeField, Range(0, 20)]
-    int replensihTimerLimit = 3;
+    int replenishTimerLimit = 1;
 
     [SerializeField]
     GameObject hitbox;
-    bool hasStick = true;
+    bool hasStick = false;
     DIR lastDirection = DIR.E;
 
+    private void Awake()
+    {
+        ReplenishStick();
+    }
 
     public void ReplenishStickAttempt()
     {
         if (!hasStick)
         {
-            replensihTimer--;
-            if (replensihTimer == 0)
+            replenishTimer--;
+            if (replenishTimer == 0)
             {
                 ReplenishStick();
-                replensihTimer = replensihTimerLimit;
             }
         }
     }
@@ -45,6 +48,7 @@ public class MozzyStick : MonoBehaviour
     void ReplenishStick()
     {
         hasStick = true;
+        replenishTimer = replenishTimerLimit;
     }
 
     public void BigStickGoSmashySmashy()
@@ -81,7 +85,8 @@ public class MozzyStick : MonoBehaviour
                 stick.transform.Rotate(new Vector3(0, 0, 45));
                 break;
         }
-        Destroy(stick.gameObject, 0.5f);
+        StartCoroutine(DestroyOnDelay(stick));
+        // Destroy(stick, 1.5f);
     }
 
     public void SetLastDir(DIR dir)
@@ -92,5 +97,12 @@ public class MozzyStick : MonoBehaviour
     public bool GetHasStick()
     {
         return hasStick;
+    }
+
+    IEnumerator DestroyOnDelay(GameObject stick)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(stick);
+        this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
     }
 }
