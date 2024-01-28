@@ -11,7 +11,7 @@ public class Curd : Cannon
         cannonShell = Resources.Load<GameObject>("CannonShells/CurdShot");
         aimer = transform.GetChild(0);
         range = 16.5f;
-        fireRate = 2 * 50;
+        fireRate = 100;
         rotation = 166;
         rotationTimer = Mathf.FloorToInt(rotation/(Random.Range(1.5f, 3f)));
     }
