@@ -7,7 +7,7 @@ public enum cheese
     MELTED,
     SHREDDED,
     CURD,
-    MINICURD, 
+    MINICURD,
     MOZZYSTICK
 }
 
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
         if (
             miningType != null
-            && (carryingType == null || carryingType == miningType)
+            && (carryingType == null || carryingType == deposit.getType())
             && deposit.getQuantity() > 0
             && carryingQuantity < maxCarryCapacity
         )
@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
         )
         {
             validMine = true;
-            carryingType = miningType;
+            // carryingType = miningType;
             PBInstance = Instantiate(
                 progressBar,
                 new Vector3(
@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
     private void EndMine(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         this.gameObject.GetComponent<Animator>().SetBool("isMining", false);
-        
+
         this.gameObject.GetComponent<Animator>().SetBool("isReloading", false);
 
         validMine = false;
@@ -339,15 +339,23 @@ public class PlayerController : MonoBehaviour
 
     void Mine()
     {
-        int check = deposit.reduceQuantity();
-        if (check >= 0)
+        int check = 0;
+        if (carryingType == deposit.getType())
         {
-            carryingQuantity++;
-            // carryingType = miningType;
-        }
-        else
-        {
-            validMine = false;
+            if (carryingType == null)
+            {
+                carryingType = miningType;
+            }
+            check = deposit.reduceQuantity();
+            if (check >= 0)
+            {
+                carryingQuantity++;
+                // carryingType = miningType;
+            }
+            else
+            {
+                validMine = false;
+            }
         }
 
         if (check == 0 || carryingQuantity == maxCarryCapacity || carryingType != deposit.getType())
