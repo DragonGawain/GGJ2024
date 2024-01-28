@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject goal;
     Vector3 direction;
     protected int HP = 10;
-    protected int scoreValue = 500;
+    protected int scoreValue = 5;
     private GameManager _gameManager;
     bool isCheesed;
     float normalSpeed;

@@ -8,5 +8,6 @@ public class BigEnemy : Enemy
     {
         HP = 8;
         isBig = true;
+        scoreValue = 10;
     }
 }

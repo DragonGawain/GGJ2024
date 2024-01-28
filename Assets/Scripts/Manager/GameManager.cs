@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int currentEnemyWave = 1;
     [SerializeField]
-    private float waveCountDown = 30000f;
+    private float waveCountDown = 30f;
     [SerializeField]
     private int maxNumEnemies = 10;
     [SerializeField]
