@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -443,7 +443,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -335, y: 175}
-  m_SizeDelta: {x: 100, y: 40}
+  m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &815611146
 CanvasRenderer:
@@ -925,8 +925,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1123,7 +1123,6 @@ MonoBehaviour:
   - {fileID: 2588860469013643097}
   - {fileID: 7423699377383754504}
   buttonEffectContainer: {fileID: 0}
-  gameOverMusicClip: {fileID: 8300000, guid: 4689bf9425e968941b24e30418950ba0, type: 3}
 --- !u!114 &1216178069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,6 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   END: {fileID: 7423699377383754504}
   GameScreen: {fileID: 2588860469374582939}
+  gameOverMusicClip: {fileID: 0}
   waveCountText: {fileID: 298211906866412745}
 --- !u!1 &2588860468413835949
 GameObject:
