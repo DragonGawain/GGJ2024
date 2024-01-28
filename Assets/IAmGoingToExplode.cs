@@ -10,7 +10,7 @@ public class IAmGoingToExplode : MonoBehaviour
     public void ENDME()
     {
         GameScreen.SetActive(false);
-        print("YES");
+        
         END.SetActive(true);
     }
 
