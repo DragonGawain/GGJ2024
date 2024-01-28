@@ -63,6 +63,7 @@ MonoBehaviour:
   isGameOver: 0
   availResources: 5
   uiManager: {fileID: 2588860468359175649, guid: 68241dee9f2814a48a0a3114a6e36829, type: 3}
+  player: {fileID: 4659881389703721317, guid: 59e11e394410c1342abb3ae6acc32fcd, type: 3}
   attackTime: 0
   small_enemy_rate: 0.8
   cluster_size: 3

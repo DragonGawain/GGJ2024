@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     private int availResources = 5;
     [SerializeField]
     private UIManager uiManager;
+    [SerializeField]
+    GameObject player;
+    MozzyStick stick;
 
     int passiveTimer = 20 * 50;
     int attackTimer = 10 * 50;
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        stick = player.GetComponent<MozzyStick>();
         StartGame();
     }
 
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
                     timer = 0;
                     attackTime = true;
                     ReplenishAllDeposits();
+                    stick.ReplenishStickAttempt();
                 }
                 break;
         }
