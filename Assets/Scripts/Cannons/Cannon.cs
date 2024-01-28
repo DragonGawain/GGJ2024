@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+// using UnityEngine.Timeline;
 
 public abstract class Cannon : MonoBehaviour
 {
@@ -58,7 +59,8 @@ public abstract class Cannon : MonoBehaviour
         );
         if (ammo > 0 && hit.collider != null && timer == 0)
         {
-            fire();
+            // fire();
+            StartCoroutine(SpawnShot());
             timer = fireRate;
         }
         if (timer > 0)
@@ -131,8 +133,38 @@ public abstract class Cannon : MonoBehaviour
         return cannonType;
     }
 
-    protected void fire()
+    // protected void fire()
+    // {
+    //     ammo--;
+
+    //     ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
+
+    //     if (cannonType != cheese.SHREDDED)
+    //     {
+    //         GameObject shell = Instantiate(cannonShell, transform.position, Quaternion.identity);
+    //         shell.GetComponent<CannonShot>().StartMove(dir);
+    //     }
+    //     else
+    //     {
+    //         for (int i = 0; i < shredQuantity; i++)
+    //         {
+    //             GameObject shell = Instantiate(
+    //                 cannonShell,
+    //                 transform.position,
+    //                 Quaternion.identity
+    //             );
+    //             float offset = Random.Range(-shredSpread, shredSpread);
+    //             Vector2 tempDir = GameManager.rotate(dir, offset);
+    //             tempDir.Normalize();
+    //             shell.GetComponent<CannonShot>().StartMove(tempDir);
+    //         }
+    //     }
+    // }
+
+    IEnumerator SpawnShot()
     {
+        yield return new WaitForSeconds(0.15f);
+
         ammo--;
 
         ammoCountTextElement.GetComponent<TextMeshProUGUI>().text = $"{ammo}";
