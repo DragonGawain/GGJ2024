@@ -437,4 +437,12 @@ public class PlayerController : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("isMining", true);
         }
     }
+
+    private void OnDestroy()
+    {
+        inputs.Player.Mine.started -= StartMine;
+        inputs.Player.Mine.canceled -= EndMine;
+        inputs.Player.Drop.performed -= DropResources;
+        inputs.Player.Caveman.performed -= Attack;
+    }
 }
