@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 4659881389703721313}
   - component: {fileID: 4659881389703721311}
   - component: {fileID: 4194092326202366338}
+  - component: {fileID: 5271774295574499830}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -329,11 +330,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4.5, y: 2}
   m_Direction: 0
---- !u!95 &283475367169669046
-Animator:
-  serializedVersion: 5
 --- !u!114 &4194092326202366338
 MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659881389703721317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e855c819dba4902bce4715bac42e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replensihTimer: 2
+  replensihTimerLimit: 2
+  hitbox: {fileID: 7278178854054872317, guid: f81b2ca3e47274e468ac72863e0c1edc, type: 3}
+--- !u!95 &5271774295574499830
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -351,13 +365,6 @@ MonoBehaviour:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e855c819dba4902bce4715bac42e28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replensihTimer: 2
-  replensihTimerLimit: 2
-  hitbox: {fileID: 7278178854054872317, guid: f81b2ca3e47274e468ac72863e0c1edc, type: 3}
 --- !u!1 &5377560182463900469
 GameObject:
   m_ObjectHideFlags: 0
