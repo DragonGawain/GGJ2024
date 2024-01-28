@@ -283,7 +283,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5178063472010657647, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203669523401717238, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 11
       objectReference: {fileID: 0}
@@ -1005,7 +1013,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5178063472010657647, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203669523401717238, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 4
       objectReference: {fileID: 0}
@@ -1075,7 +1091,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5178063472010657647, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203669523401717238, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 7
       objectReference: {fileID: 0}
@@ -1350,7 +1374,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5178063472010657647, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6670293227115798295, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
+      propertyPath: maxQuantity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203669523401717238, guid: 152a3564a98878941b871b05ee93d39e, type: 3}
       propertyPath: maxQuantity
       value: 6
       objectReference: {fileID: 0}

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     protected int eatTimerReset = 2 * 50;
     int eatTimer = 0;
     bool isEating = false;
-    ResourceDeposit deposit;
+    EatResouresDeposit deposit;
     protected int eatAmount = 1;
     protected int eatCapacity = 2;
     int amountEaten = 0;
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
         // if other is a deposit
         if (other.gameObject.layer == 6)
         {
-            deposit = other.GetComponent<ResourceDeposit>();
+            deposit = other.GetComponent<EatResouresDeposit>();
             isEating = true;
         }
         // Destroy(gameObject);
