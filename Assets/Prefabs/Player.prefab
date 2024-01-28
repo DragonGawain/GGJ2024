@@ -296,6 +296,7 @@ MonoBehaviour:
   attackImageElement: {fileID: 1720579659038649772}
   reloadEffect: {fileID: 8300000, guid: 39694742a38ee0d44a07251a444e7a47, type: 3}
   walkCycleSFX: {fileID: 8300000, guid: be2c26d5c86a182468b3c6e91183d999, type: 3}
+  miningCycleClip: {fileID: 8300000, guid: eb0d7e88714b29d43a7f7c7bc0db7ae9, type: 3}
 --- !u!50 &4659881389703721313
 Rigidbody2D:
   serializedVersion: 4

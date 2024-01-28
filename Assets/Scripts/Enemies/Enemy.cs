@@ -139,6 +139,17 @@ public class Enemy : MonoBehaviour
         {
             deposit = other.GetComponent<EatResouresDeposit>();
             isEating = true;
+
+            var munchEffectObject = GameObject.Find("EnemyMunchDieSFXObject");
+            if (munchEffectObject == null)
+            {
+                var enemyCheesedSFX = Resources.Load<GameObject>(
+                        "Sound/EnemyMunchDieSFXObject"
+                    );
+                GameObject sound = Instantiate(enemyCheesedSFX);
+
+                Destroy(sound, 2.0f);
+            }
         }
         // Destroy(gameObject);
         //speed = 0;

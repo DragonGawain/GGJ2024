@@ -28,6 +28,9 @@ public abstract class Cannon : MonoBehaviour
 
     [SerializeField]
     private GameObject ammoCountTextElement;
+    [SerializeField]
+    private AudioClip reloadEffect;
+    private AudioSource cannonAudioSource;
 
     // private void Awake()
     // {
@@ -40,6 +43,8 @@ public abstract class Cannon : MonoBehaviour
 
         var ammoCountImage = this.gameObject.GetComponentInChildren<Image>();
         ammoCountImage.sprite = Resources.Load<Sprite>("Images/" + imageToLoad);
+
+        cannonAudioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -126,6 +131,11 @@ public abstract class Cannon : MonoBehaviour
             return false;
         }
         ammo++;
+
+        cannonAudioSource.Stop();
+        cannonAudioSource.clip = reloadEffect;
+        cannonAudioSource.loop = false;
+        cannonAudioSource.Play();
 
         var imageToLoad = ammo.ToString();
 
