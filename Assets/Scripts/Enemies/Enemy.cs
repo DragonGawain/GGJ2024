@@ -154,9 +154,9 @@ public class Enemy : MonoBehaviour
             else
             {
                 var smallEenemyDieSFX = Resources.Load<GameObject>("Sound/SmallEnemyDieSFXObject");
-                Instantiate(smallEenemyDieSFX);
+                GameObject sound = Instantiate(smallEenemyDieSFX);
 
-                Destroy(smallEenemyDieSFX, 2.0f);
+                Destroy(sound, 2.0f);
             }
 
             Destroy(this.gameObject);
