@@ -62,6 +62,16 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainGame");
     }
 
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void OnButtonUIEvent(GameObject effectToCreate)
     {
         Instantiate(effectToCreate, new Vector2(), new Quaternion(), buttonEffectContainer.GetComponent<Transform>());
