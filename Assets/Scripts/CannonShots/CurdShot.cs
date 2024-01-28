@@ -17,6 +17,11 @@ public class CurdShot : CannonShot
 
     private void OnDestroy()
     {
+        var bigEenemyDieSFX = Resources.Load<GameObject>("Sound/CheeseCurdShotImpactSFX");
+        GameObject sound = Instantiate(bigEenemyDieSFX);
+
+        Destroy(sound, 2.0f);
+
         if (!hitDeathPlane)
         {
             Vector2 angle = new Vector2(1, 1);
