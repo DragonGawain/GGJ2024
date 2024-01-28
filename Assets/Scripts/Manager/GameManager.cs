@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        isPaused = true;
+        // isPaused = true;
 
         uiManager.PauseGame();
     }
@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        isGameOver = true;
+        // isGameOver = true;
 
         uiManager.EndGame();
     }
