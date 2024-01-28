@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     [Range(0,1f)]
     public float small_enemy_rate = 1f;
-
+    public float spawner_rate;
     
     public int cluster_size = 1;
 
@@ -125,6 +125,15 @@ public class GameManager : MonoBehaviour
         enemiesDefated = 0;
         if (currentEnemyWave % waveCountTillNewSpawners == 0)
         {
+            if (spawner_rate > 0)
+            {
+                spawner_rate -= 0.5f;
+            }
+            else
+            {
+                spawner_rate = 0;
+            }
+
             
             if (small_enemy_rate >= 0.5f)
             {
